@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- saved from url=(0103)https://tmx315.github.io/tmx020/%E8%B4%AA%E5%90%83%E8%9B%87%E5%A4%A7%E4%BD%9C%E6%88%98_files/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>SnakeBattle</title>
+	
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telphone=no, email=no">
+	<link rel="stylesheet" type="text/css" href="./normalize.css">
+	<link rel="stylesheet" type="text/css" href="./app.css">
+	<style type="text/css">
+		#stage{
+			box-sizing: border-box;
+		}
+</style>
+</head>
+<body>
+<canvas class="cover" id="stage" width="1118" height="600" style="width: 1163px; height: 806px;"></canvas>
+<div id="infobox">
+	<h1>FPS: <span id="fps-rate">12.51</span></h1>
+	<h1 id="time-remain"></h1>
+</div>
+<div id="motionhandler" class="leftSide">
+	<div class="buttonWrapper">
+		<button class="MotionControler" style="transform: translate(17.9308px, -1.57689px);"></button>
+	</div>
+</div>
+<div id="velocityHandler" class="rightSide">
+	<div class="buttonWrapper lightning">
+	</div>
+</div>
+<ul id="snake_list"><li><span>1</span><span>布达佩斯</span><span>55</span></li><li><span>2</span><span>朱佳丽</span><span>50</span></li><li><span>3</span><span>ting</span><span>46</span></li><li><span>4</span><span>jaexd</span><span>43</span></li><li><span>5</span><span>郑依DTX</span><span>37</span></li><li><span>6</span><span>湮蓠</span><span>30</span></li><li><span>7</span><span>原谅我不善言辞</span><span>28</span></li><li><span>8</span><span>林文红</span><span>23</span></li><li><span>9</span><span>player</span><span>22</span></li><li><span>10</span><span>嘘不要吵</span><span>7</span></li></ul>
+<div class="cover end-scene" id="game-end-scene" style="display: none;">
+	<div class="report-board">
+		<div class="report-title">📢孟轩网：游戏结束</div>
+		<div class="report-content">
+			<table>
+				<tbody><tr>
+					<td>长度</td>
+					<td id="snake-length" class="number">8</td>
+				</tr>
+				<tr>
+					<td>击杀</td>
+					<td id="snake-kill" class="number">0</td>
+				</tr>
+			</tbody></table>
+		</div>
+		<div class="option-panel">
+			
+			<button class="panel-btn repeat" id="repeat-btn">📢重来孟轩网</button>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="./bundle.js.下载"></script>
+
+</body></html>
