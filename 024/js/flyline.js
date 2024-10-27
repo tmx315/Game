@@ -1,6 +1,6 @@
 Main.flyLine = function(angle){
 	
-	var speedRate = 7;//速度倍率，默认为7
+	var speedRate = 7;//速度倍率
 	var gRate = 100;//重力倍率
 	var flyBird;
 	var stage = Main.stage;
