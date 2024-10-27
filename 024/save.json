@@ -1,0 +1,104 @@
+{
+    "save1": {
+        "name": "存档1", 
+        "level": 1, 
+        "shop": false, 
+        "xlevel": [ ], 
+        "item": [ ], 
+        "money": 300, 
+        "exp": 0, 
+        "hero": {
+            "艾尔文": {
+                "type": "步兵", 
+                "pro": "战士", 
+                "exp": 0, 
+                "avatar": "asset/image/avatar/face01.gif", 
+                "avatars": {
+                    "hurt": "asset/image/avatar/face02.gif", 
+                    "angry": "asset/image/avatar/face03.gif", 
+                    "heavy": "asset/image/avatar/face04.gif"
+                }, 
+                "img": "asset/image/role/hero/common/mgif0101.png", 
+                "imgs": {
+                    "active": "asset/image/role/hero/active/mgif0101.gif", 
+                    "battle": "asset/image/role/hero/battle/class0101.gif"
+                }, 
+                "atk": 27, 
+                "def": 18, 
+                "mov": 5, 
+                "mr": 50, 
+                "mp": 0, 
+                "range": 1, 
+                "move": "run", 
+                "command": {
+                    "range": 2, 
+                    "atk": 1, 
+                    "def": 3
+                }, 
+                "magic": [ ], 
+                "magic_atk": 1, 
+                "magic_range": 0, 
+                "equip": {
+                    "weapon": null, 
+                    "armor": null, 
+                    "jew": null
+                }, 
+                "recruit": [
+                    "步兵"
+                ], 
+                "inj": "asset/effect/injured-man.mp3"
+            }, 
+            "海恩": {
+                "type": "法师", 
+                "pro": "术士", 
+                "exp": 0, 
+                "avatar": "asset/image/avatar/face11.gif", 
+                "avatars": {
+                    "hurt": "asset/image/avatar/face12.gif", 
+                    "angry": "asset/image/avatar/face13.gif", 
+                    "heavy": "asset/image/avatar/face14.gif"
+                }, 
+                "img": "asset/image/role/hero/common/mgif0503.png", 
+                "imgs": {
+                    "active": "asset/image/role/hero/active/mgif0503.gif", 
+                    "battle": "asset/image/role/hero/battle/class0503.gif"
+                }, 
+                "atk": 23, 
+                "def": 13, 
+                "mov": 5, 
+                "mr": 60, 
+                "mp": 12, 
+                "range": 1, 
+                "move": "run", 
+                "command": {
+                    "range": 2, 
+                    "atk": 4, 
+                    "def": 2
+                }, 
+                "magic": [
+                    "魔法箭"
+                ], 
+                "magic_atk": 1, 
+                "magic_range": 0, 
+                "equip": {
+                    "weapon": null, 
+                    "armor": null, 
+                    "jew": null
+                }, 
+                "recruit": [
+                    "卫兵"
+                ], 
+                "inj": "asset/effect/injured-man.mp3"
+            }
+        }, 
+        "role": {}, 
+        "round": 1, 
+        "finish": { }, 
+        "lvjs": {
+            "first": {
+                "at": [ ], 
+                "bat": [ ]
+            }
+        }
+    }
+}
