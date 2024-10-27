@@ -1,0 +1,252 @@
+/* 基本 */
+  html, body,#app{
+    height: 100%;
+    width: 100%;
+    margin:0;
+    overflow: hidden;
+  }
+  #app{
+    background-color: #000;
+    user-select: none;
+  }
+  #map{
+    position:absolute;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+
+/* 网格 */
+  .grid{
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  .grid-y{
+    display: flex;
+  }
+  .grid-x{
+    position: relative;
+    color:#fff;
+  }
+  .grid-x:hover{
+    background-image: url(../asset/image/ui/sel.png);
+    background-size: 100% 100%;
+  }
+  .grid-x-blue{animation:acblue 0.8s infinite alternate;}
+  @keyframes acblue{to {background-color:rgb(30,144,255,0.5);}}
+  .grid-x-blue2{animation:acblue2 0.8s infinite alternate;}
+  @keyframes acblue2{to {background-color:rgb(30,144,255,0.5);}}
+  .grid-x-green{animation:acgreen 0.8s infinite alternate;}
+  @keyframes acgreen{to {background-color:rgb(0,255,0,0.5);}}
+  .grid-x-green2{animation:acgreen2 0.8s infinite alternate;}
+  @keyframes acgreen2{to {background-color:rgb(0,255,0,0.5);}}
+  .grid-x-red{animation:acred 0.8s infinite alternate;}
+  @keyframes acred{to {background-color:rgb(255,69,0,0.5);}}
+  .grid-x-red2{animation:acred2 0.8s infinite alternate;}
+  @keyframes acred2{to {background-color:rgb(255,69,0,0.5);}}
+
+  .grid-shade{
+    background-color: rgb(0,0,0,0.5);
+    filter: brightness(50%);
+  }
+  .grid-over{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:100%;
+    width: 100%;
+  }
+  .grid-role{
+    position: absolute;
+    z-index: 1;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+  .grid-role img{
+    height:70%;
+    max-width: 70%;
+  }
+  .grid-role .enemy{
+    transform: rotateY(180deg);
+  }
+  .grid-role .hp{
+    position: absolute;
+    bottom:0;
+    right:0;
+    font-weight: bold;
+    color: #FFFFAA;
+  }
+  .grid-role .netname{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: bold;
+    color: #FFF;
+    width: 100%;
+    white-space: nowrap;
+  }
+  .img-shade{
+    filter: brightness(50%);
+  }
+  .grid-click{
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+
+    background-repeat:no-repeat;
+    background-size: 70% 70%;
+    background-position:center;
+  }
+  .grid-click-move:hover{
+    background-image: url(../asset/image/ui/arrow.png);
+  }
+  .grid-click-attack:hover{
+    background-image: url(../asset/image/ui/attack.png);
+  }
+  .grid-click-magic:hover{
+    background-image: url(../asset/image/ui/magic.gif);
+    background-size: 100% 100%;
+  }
+  .grid-item{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+  }
+
+/* 角色行为菜单 */
+  .role-menu{
+    position:absolute;
+    left:50px;
+    padding:5px;
+    background-color: #fff;
+    border-radius: 5px;
+    z-index:5;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .role-menu button{
+    width: 70px;
+    font-size: 16px;
+    margin:2px;
+  }
+
+/* 回合标题 */
+  #round{
+    position: fixed;
+    width: 320px;
+    height: 110px;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+
+    font-weight: bold;
+    font-size: 80px;
+    color:#FFF;
+    text-shadow: 0 0 3px #000;
+  }
+
+/* UI菜单 */
+  .ui-info{
+    position: fixed;
+    right:30px;
+    top:25px;
+    z-index: 3;
+
+    margin-bottom:10px;
+    font-size: 25px;
+    color: #fff;
+    text-shadow: 0 0 10px #000;
+  }
+  .ui-info span{
+    margin-right:10px;
+  }
+  .ui{
+    position: fixed;
+    right:30px;
+    bottom:25px;
+    z-index: 3;
+  }
+
+/* 网络聊天框 */
+  .chat{
+    position: fixed;
+    left:30px;
+    bottom:25px;
+    height: 236px;
+  }
+  #chat{
+    width: 400px;
+    height: 200px;
+    overflow: auto;
+
+    color:#FFF;
+    font-size: 20px;
+    background-color: rgb(0,0,0,0.2);
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+/* 部署士兵 */
+  .deploy{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin:auto;
+    width:500px;
+    height:310px;
+
+    background-color: #fff;
+    border-radius: 20px;
+    padding:20px 30px;
+  }
+  .deploy .el-icon-circle-close{
+    position: absolute;
+    right: 10px;
+    top:10px;
+    font-size: 30px;
+  }
+  .deploy .el-icon-circle-close:hover{
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  .deploy p{margin:0;}
+  .deploy .title{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .deploy .stitle{
+    font-size: 16px;
+    margin: 10px 0 5px 0;
+  }
+  .deploy .troops{
+    display: flex;
+    overflow-x: auto;
+    min-height: 70px;
+  }
+  .deploy .arm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+  }
+  .deploy .arm img{
+    width: 40px;
+    height: 40px;
+  }
+  .deploy .btn{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+  }

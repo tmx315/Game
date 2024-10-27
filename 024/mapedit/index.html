@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>地形编辑</title>
+
+  <script type="text/javascript" src="/asset/code/js/axios.min.js"></script>
+  <script type="text/javascript" src="/asset/code/js/vue/vue.global.prod.js"></script>
+
+  <style type="text/css">
+    html, body,#app{
+      height: 100%;
+      width: 100%;
+      margin:0;
+      overflow: hidden;
+    }
+    #app{
+      background-color: #000;
+    }
+
+    #map{
+      position:absolute;
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+    }
+    
+    .grid{
+      position: absolute;
+      top:0;
+      left:0;
+    }
+    .grid-y{
+      display: flex;
+      height: 48px;
+    }
+    .grid-x{
+      position: relative;
+      width: 48px;
+      text-shadow: 0 0 5px #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .grid-x:hover{
+      background-image: url(sel.png);
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="map" :style="map">
+      <!-- UI网格 -->
+      <div class="grid">
+        <div v-for="y in grid.y" class="grid-y">
+          <div v-for="x in grid.x" class="grid-x" @click="itemFunc(x+','+y)" :style="'color:'+terColor[data.terrain[data.map.terrain[x+','+y]]['注释']]+';'">
+            {{data.terrain[data.map.terrain[x+','+y]]['注释']}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 遮罩层 -->
+    <div id="mask" style="width: 100%;height: 100%;position: absolute;top:0;left:0;z-index:10;display: none;"></div>
+
+    <!-- 写入地图数据 -->
+    <div style="font-size: 20px;position: absolute;z-index:10;right: 5vw;bottom: 5vh;">
+      <select style="height: 40px;width: 60px;" v-model="selTer" placeholder="请选择">
+        <option v-for="item in terrain":value="item">{{data.terrain[item]['注释']}}</option>
+      </select>
+      <button style="height: 40px;width: 60px;" @click="save">保存</button>
+    </div>
+  </div>
+
+  <script>
+    const App = {
+      data(){
+        return{
+          map:'',
+          grid:{
+            cell:48,
+            x:0,
+            y:0,
+          },
+          //data
+          data:{
+            map:null,
+            terrain:null
+          },
+          //
+          terrain:[],
+          terColor:{
+            '平地':'white',
+            '浅水':'Aqua',
+            '深水':'blue',
+            '树林':'green',
+            '山地':'Chocolate',
+            '屋顶':'DarkGoldenRod',
+            '城墙':'grey',
+            '障碍':'DarkViolet',
+            '禁止':'red',
+          },
+          selTer:'land'
+        }
+      },
+      created(){
+        let xmlhttp=new XMLHttpRequest()
+
+        //获取地形
+        xmlhttp.open("GET","terrain.json",false)
+        xmlhttp.send()
+        this.data.terrain = JSON.parse(xmlhttp.responseText)
+
+        //获取地图数据
+        let d = new Date();
+        let time = d.getTime();
+        xmlhttp.open("GET","map.json?v="+time,false)
+        xmlhttp.send()
+        this.data.map = JSON.parse(xmlhttp.responseText)
+
+        let rate=this.grid.cell/this.data.map.cell//方格大小
+        let width=this.data.map.width*rate,height=this.data.map.height*rate
+        this.map='background-image: url(map.bmp?v='+time+');width: '+width+'px;height: '+height+'px;'
+        //定义网格
+        this.grid.x=width/this.grid.cell
+        this.grid.y=height/this.grid.cell
+
+        //定义地形数组
+        for(let k in this.data.terrain){
+          this.terrain.push(k)
+        }
+
+        if(!this.data.map.terrain){
+          this.data.map.terrain={}
+          for(let x=1;x<=this.grid.x;x++){
+            for(let y=1;y<=this.grid.y;y++){
+              if(x==1||x==this.grid.x||y==1||y==this.grid.y){
+                this.data.map.terrain[x+','+y]='stop'
+              }else{
+                this.data.map.terrain[x+','+y]='land'
+              }
+            }
+          }
+        }
+      },
+      mounted(){
+
+      },
+      methods:{
+        itemFunc(xy){
+          this.data.map.terrain[xy]=this.selTer
+        },
+        save(){
+          axios.post('api.php?r=save',{map:this.data.map})
+        }
+      }
+    }
+    Vue.createApp(App).mount("#app")
+
+    //获取元素
+    var dv = document.getElementById('map');
+    var x = 0;
+    var y = 0;
+    var l = 0;
+    var t = 0;
+    var isDown = false;
+    document.getElementById('mask').style.cursor = 'move';//调整遮罩层样式
+    //鼠标按下事件
+    dv.onmousedown = function(e) {
+        if(e.button!=2){
+          return
+        }
+        //调出遮罩层
+        document.getElementById('mask').style.display='block'
+        
+        //获取x坐标和y坐标
+        x = e.clientX;
+        y = e.clientY;
+
+        //获取左部和顶部的偏移量
+        l = dv.offsetLeft;
+        t = dv.offsetTop;
+        //开关打开
+        isDown = true;
+        //设置样式  
+        //document.getElementById('mask').style.cursor = 'move';
+    }
+    //鼠标移动
+    window.onmousemove = function(e) {
+        if (isDown == false) {
+            return;
+        }
+        //获取x和y
+        var nx = e.clientX;
+        var ny = e.clientY;
+        //计算移动后的左偏移量和顶部的偏移量
+        var nl = nx - (x - l);
+        var nt = ny - (y - t);
+
+        dv.style.left = nl + 'px';
+        dv.style.top = nt + 'px';
+    }
+    //鼠标抬起事件
+    window.onmouseup = function() {
+        //隐藏遮罩层
+        document.getElementById('mask').style.display='none'
+
+        //开关关闭
+        isDown = false;
+        //document.getElementById('mask').style.cursor = 'default'
+    }
+
+    //禁止右键菜单
+    window.oncontextmenu = function(){return false;}
+  </script>
+</body>
+</html>
