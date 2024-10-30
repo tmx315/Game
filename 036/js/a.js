@@ -21,9 +21,9 @@ function updateShare(bestScore) {
 
 function updateShareScore(bestScore) {
 	if(bestScore > 0) {
-		shareTitle = "我在《3D熊出没》被追了" + bestScore + "米，你跑了多远？！";
+		shareTitle = "我在《孟轩官网036--3D熊出没》被追了" + bestScore + "米，你跑了多远？！";
 	}
 	else{
-		shareTitle = "超华丽跑酷《3D熊出没》，你能跑多远？";
+		shareTitle = "超华丽跑酷《孟轩官网036--3D熊出没》，你能跑多远？";
 	}
 }
