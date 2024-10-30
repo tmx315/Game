@@ -1,51 +1,41 @@
-<!DOCTYPE html> 
-<html manifest="manifest.mf">
+<!DOCTYPE html>
+<html lang="zh-cn">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="Content-Type" content="text/html;">
-<meta http-equiv="Content-Script-Type" content="text/javascript">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta charset="utf-8">
-<meta name="description" content="game for iPhone">
-<meta name="keywords" content="iPhone,Androig,iPad,game,html5 game,3d,action game,run,bear,game,Flash,Flash for iPhone,html5,iPod touch,iPad">
-<meta name="viewport" id="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Cache-Control" content="no-cache">
-<meta equiv="Expires" content="0">
-<title>孟轩官网031</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0, width=device-width">
+	<meta name="screen-orientation" content="portrait">
+    <title>孟轩官网031</title>
 <link rel="icon" href="https://mxw315.pages.dev/mxw002.jpg" type="image/png">
-<style>
-  body {
-    background-image: url('https://mxw315.pages.dev/mxw001.jpg'); /* 设置背景图片 */
-    background-repeat: no-repeat; /* 背景图片不重复 */
-    background-attachment: scroll; /* 背景图片跟随滚动条滚动 */
-    background-size: cover; /* 背景图片覆盖整个容器，保持宽高比 */
-    background-position: center; /* 背景图片居中显示 */
-  }
-</style>
-<style type="text/css">
-<!--
-body {
-	-webkit-user-select: none;
-	margin:0 auto;
-	background:#000;
-}
--->
-
-</style>
-
-<script type="text/javascript" src="js/a.js"></script>
-<script type="text/javascript" src="js/gm16.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/index.css">
+    <script src="static/js/zepto.min.js"></script>
 
 </head>
-<body onorientationchange="rtalt()" style="-webkit-transform-origin: 0px 0px 0px; ">
+<body>
 
-<div id="chf2" style="position:relative;width:320px;margin:0 auto;">
-	<canvas id="gcvs" width="320" height="416"></canvas>
-</div>	
+<div id="container">
+	<div id="guidePanel"></div>
+	<div id="gamepanel">
+		<div class="score-wrap">
+            <div class="heart"></div>
+            <span id="score">0</span>
+        </div>
+		<canvas id="stage" width="320" height="568"></canvas>
+	</div>
+	<div id="gameoverPanel"></div>
+	<div id="resultPanel">
+        <div class="weixin-share"></div>
+        <a href="javascript:void(0)" class="replay"></a>
+        <div id="fenghao"></div>
+        <div id="scorecontent">
+        	您在<span id="stime" class="lighttext">2378</span>秒内抢到了<span id="sscore" class="lighttext">21341</span>个月饼<br>超过了<span id="suser" class="lighttext">31%</span>的用户！
+        </div>
+        <div class="textc">
+        	<span class="btn1 share">请小伙伴吃月饼</span>
+        </div>
+	</div>
+</div>
 
+<script src="static/js/index.js"></script>
 
 </body>
 </html>
