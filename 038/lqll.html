@@ -1,0 +1,101 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-page-mode" content="app">
+    <title>流量踩踩看</title>
+    <style>
+        .loadingcss{position:fixed;z-index:999;top:0;left:0;display:table;width:100%;height:100%;background:#dedfe6;color:#fff;text-align:center}.loadingcss .loader{display:table-cell;vertical-align:middle}.loadingcss .loader span{position: relative; display: inline-block; margin-bottom: .5rem; border-top: .3rem solid hsla(0,0%,100%,.7); border-right: .3rem solid hsla(0,0%,100%,.7); border-bottom: .3rem solid hsla(0, 0%, 100%, 0.7); border-left: .3rem solid #4462a7; -webkit-animation: load .8s infinite linear; animation: load .8s infinite linear;}.loadingcss .loader span,.loadingcss .loader span:after{width:2.2rem;height:2.2rem;border-radius:50%}@-webkit-keyframes load{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes load{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body style="background: #fff;">
+<!--loadingcss-->
+<div class="loadingcss">
+    <div class="loader">
+        <span></span>
+        <p>Loading...</p>
+    </div>
+</div>
+<!--//loading-->
+
+<div id="lqllBg">
+    <!--<div style="background-color: #29acc5;;">-->
+        <!--<div style="padding: 10% 10% 0 10%;">-->
+            <!--&lt;!&ndash;<img src="img/lqll.png" style="display: block;margin: 0 auto; width: 70%;">&ndash;&gt;-->
+            <!--<p style="font-size: 2.6rem; text-align: center; color: #fff;"><span style="color: #ffea00;">30M</span>流量</p>-->
+        <!--</div>-->
+        <!--<img src="img/lqll-line.png" style="display: block; margin: 0 auto; width: 100%;">-->
+    <!--</div>-->
+    <div id="lqllTitle">
+        <img src="img/succeedTitle.png">
+    </div>
+    <div id="lqllIcon" style="padding: 10% 10% 5%;">
+        <img src="img/icon0.png" style="display: block;margin: 6% auto 3%; width: 80%">
+        <p class="lqllP">唱吧免费七天</p>
+        <p class="lqllP" style="margin: 0 auto 20%">会员兑换卷</p>
+        <button id="lqll-btn" class="btn btn-3d btn200" style="font-size: 1.2rem; display: block; width: 100%;">马上领取</button>
+    </div>
+
+</div>
+
+<div class="BOX-M" style="position:fixed;top:0;left:0;right:0;bottom:0;z-index:5; background-color: rgba(0,0,0,0.8); display: none;">
+    <div class="popbox" style="text-align: center;">
+        <div class="boxTitle">操作提示！</div>
+        <div class="boxCont">
+            <div id="alerttext" style="margin-bottom: 5%;"></div>
+            <button class="btn btn-3d" id="btn-ok">开始闯关</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 5 * (clientWidth / 100) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+    $(window).load(function () {
+        $(".loadingcss").remove();
+
+//        $("#lqll-btn").click(function(){
+//        	 if($(".phoneinput").val()==""){
+//                 alerts(
+//                         mesg = "手机号码不能为空，<br/>请填写！",
+//                        btntext = "去填写"
+//                 )
+//             }
+//             else {
+//                 alerts(
+//                         mesg = "你的号码不是广东电信号码！请正确填写",
+//                         btntext = "重新输入"
+//                 )
+//             }
+//        });
+
+        function alerts(mesg,btntext) {
+            $(".BOX-M").show();
+            $("#alerttext").html(mesg);
+            $("#btn-ok").text(btntext);
+        }
+        $("#btn-ok").click(function(){
+        	 $(".BOX-M").hide();
+        });
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-page-mode" content="app">
+    <title>孟轩官网038</title>
+<link rel="icon" href="https://mxw315.pages.dev/mxw002.jpg" type="image/png">
+
+<style>
+  body {
+    background-image: url('https://mxw315.pages.dev/mxw001.jpg'); /* 设置背景图片为网址 */
+    background-repeat: no-repeat; /* 背景图片不重复 */
+    background-attachment: scroll; /* 背景图片跟随滚动条滚动 */
+    background-size: cover; /* 背景图片覆盖整个容器，保持宽高比 */
+    background-position: center; /* 背景图片居中显示 */
+  }
+</style>
+    <style>
+        .loadingcss{position:fixed;z-index:999;top:0;left:0;display:table;width:100%;height:100%;background:#dedfe6;color:#fff;text-align:center}.loadingcss .loader{display:table-cell;vertical-align:middle}.loadingcss .loader span{position: relative; display: inline-block; margin-bottom: .5rem; border-top: .3rem solid hsla(0,0%,100%,.7); border-right: .3rem solid hsla(0,0%,100%,.7); border-bottom: .3rem solid hsla(0, 0%, 100%, 0.7); border-left: .3rem solid #4462a7; -webkit-animation: load .8s infinite linear; animation: load .8s infinite linear;}.loadingcss .loader span,.loadingcss .loader span:after{width:2.2rem;height:2.2rem;border-radius:50%}@-webkit-keyframes load{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes load{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+<body>
+<!--loadingcss-->
+<div class="loadingcss">
+    <div class="loader">
+        <span></span>
+        <p>Loading...</p>
+    </div>
+</div>
+<!--//loading-->
+
+<mian class="vetically" style="height: 100%;">
+    <img src="img/index1.png" style="display: block;margin: 3rem auto 0; width: 98%;">
+    <a href="game.html" class="btn btn-danger btn-3d" style="display: block; width: 70%; margin: 10% auto 10%; font-size: 1.5rem;">立即参与</a>
+    <p
+            style="text-align: center;"><span class="btn-guize" style="font-size: 1.2rem; color: black;font-weight: 500; text-decoration: underline;">活动规则</span></p>
+</mian>
+
+<div class="guize vetically" style="display: none;">
+    <img src="img/guize.png" style="display: block;margin: 3% auto 8%; width: 40%;">
+    <p style="color: #006289;list-style: none;font-size: 1.1rem;font-weight: bold;">活动时间</p>
+    <ul style="width: 100%">
+        <li>2024年10月31日</li>
+    </ul>
+    <p style="color: #006289;list-style: none;font-size: 1.1rem;font-weight: bold;">参与方式</p>
+    <ul>
+        <li>点击下落的黑色滑块，在规定时间内踩完全部滑块完成关卡，并领取福利。</li>
+    </ul>
+    <p style="color: #006289;list-style: none;font-size: 1.1rem;font-weight: bold;">奖品类型</p>
+    <ul>
+        <li>暂无......</li>
+    </ul>
+    <p style="color: #006289;list-style: none;font-size: 1.1rem;font-weight: bold;">领取奖励</p>
+    <ul>
+        <li>暂无......</li>
+    </ul>
+</div>
+
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 5 * (clientWidth / 100) + 'px';
+                };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+
+    window.onload=function(){
+        $(".loadingcss").remove();
+    };
+
+    $(".btn-guize").click(function(){
+        $(".guize").show();
+        history.pushState(state, "HTML 5 History", "yourpage");
+    });
+    window.onpopstate = function () {
+        $(".guize").hide();
+    };
+    var state = {
+        title : "活动规则",
+        url : "yourpage"
+    };
+    $(".guize").click(function(){
+        history.back(-1);
+    });
+
+
+</script>
+</body>
+</html>
