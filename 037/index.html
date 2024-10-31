@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>孟轩官网037</title>
+<link rel="icon" href="https://mxw315.pages.dev/mxw002.jpg" type="image/png">
+
+<style>
+  body {
+    background-image: url('https://mxw315.pages.dev/mxw001.jpg'); /* 设置背景图片为网址 */
+    background-repeat: no-repeat; /* 背景图片不重复 */
+    background-attachment: scroll; /* 背景图片跟随滚动条滚动 */
+    background-size: cover; /* 背景图片覆盖整个容器，保持宽高比 */
+    background-position: center; /* 背景图片居中显示 */
+  }
+</style>
+    <meta name="keywords" content="孟轩官网 | HTML5,犀牛碰碰,益智小游戏" />
+    <meta name="description" content="孟轩官网 | HTML5犀牛碰碰益智小游戏源码下载。" /> 
+	
+	<link href="css/gamestyles.css" rel="stylesheet" type="text/css" />
+    <!--suppress HtmlUnknownTarget -->
+    <script src="game.min.js"></script>
+    <script>
+
+    var canvas;
+    var config = {
+        hotUrlDisabled: false,
+        coldUrlDisabled: false
+ 
+   
+    }
+      function init() {
+		  can = document.getElementById("Canvas");
+		  }
+
+    function yx() {
+        canvas = document.getElementById("gameCanvas");
+        Main.initialize(canvas, config);
+	   
+
+      
+    }
+
+	</script>
+
+</head>
+
+<body onLoad="init();yx()">
+    <div id="loader" class="loader">
+        <div id="loaderPercents" class="loaderPercentage"></div>
+    </div>
+
+    <div class="canvasHolder">
+        <canvas id="gameCanvas" width="640" height="712"></canvas>
+    </div>
+</body>
+</html>
