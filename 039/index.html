@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+﻿
+<!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>孟轩官网039</title>
+<head><meta name="x-key" content="d8bbc5d8f425017723b0cba7c7569492">
+<meta charset="utf-8">
+<title>孟轩官网039</title>
 <link rel="icon" href="https://mxw315.pages.dev/mxw002.jpg" type="image/png">
 <style>
   body {
@@ -13,68 +14,59 @@
     background-position: center; /* 背景图片居中显示 */
   }
 </style>
-		<style type="text/css">
-            canvas {
-                display: block;
-                margin: 50px auto;
-                box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
-                cursor: pointer;
-            }
-            .btn-wrap { 
-                display: flex; 
-                flex-direction: row; 
-                justify-content:center;
-            }
-            .btn-wrap div { 
-                margin: 0 10px;
-            }
-            div>span {
-                display: inline-block;
-                padding: 10px 20px;
-                color: #fff;
-                background-color: #EE82EE;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            div.unable span { 
-                background: #D6D6D4; 
-                color: #adacaa;
-            }
-            #result-wrap {text-align: center;}
-		</style>
-		<style id="tsbrowser_video_independent_player_style" type="text/css">  
-		    [tsbrowser_force_max_size] {
-		    	width: 100% !important;                                                      
-		    	height: 100% !important;                                                     
-		    	left: 0px !important;                                                        
-		    	top: 0px !important;                                                         
-		    	margin: 0px !important;                                                      
-		    	padding: 0px !important;}                                                   
-		    [tsbrowser_force_fixed] {                                                      
-		    	position: fixed !important;                                                  
-		    	z-index: 9999 !important;                                                    
-		    	background: black !important;}                                                                            
-		    [tsbrowser_force_hidden] {                                                     
-		    	opacity: 0 !important;                                                       
-		    	z-index: 0 !important; }                                                                            
-		    [tsbrowser_hide_scrollbar] {                                                   
-		    	overflow: hidden !important;}
-		</style>
-	</head>
-	<body>
-        <h3 id="result-wrap">--孟轩官网039益智五子棋--</h3>
-        <canvas id="chess" width="450px" height="450px"></canvas>
-        <div class="btn-wrap">
-            <div id="restart" class="restart">
-                <span>重新开始</span>
-            </div>
-            <div id="goback" class="goback unable">
-                <span>悔棋</span>
-            </div>
-            <div id="return" class="return unable">
-                <span>撤销悔棋</span>
-            </div>
-        </div>
-        <script type="text/javascript" charset="utf-8" src="js/test.js"></script>
+<meta name="x-author" content="Onekes">
+<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="full-screen" content="true"/>
+<meta name="screen-orientation" content="portrait"/>
+<meta name="x5-fullscreen" content="true"/>
+<meta name="360-fullscreen" content="true"/>
+<script type="text/javascript"></script>
+<script language="javascript" type="text/javascript"></script>
+<style>
+body {
+	text-align: center;
+	background: #000000;
+	padding: 0;
+	border: 0;
+	margin: 0;
+	height: 100%;
+}
+html {
+	-ms-touch-action: none; /* Direct all pointer events to JavaScript code. */
+	overflow: hidden;
+}
+div, canvas {
+	display:block;
+	position:absolute;
+	margin: 0 auto;
+	padding: 0;
+	border: 0;
+}
+</style>
+</head>
+<body>
+
+<img src="wx.jpg" width="0" height="0" style="position:absolute">
+<div style="position:relative;" id="gameDiv"></div>
+<img src="resource/title.png" width ="0" height ="0"/>
+
+<script>var document_class = "Main";</script>
+<script src="launcher/dcagent.min.js"?v="0.0.9"></script>
+<script src="launcher/egret_require.js"></script>
+<script src="launcher/egret_loader.js"></script>
+<script src="launcher/game-min.js"></script>
+<script>
+    var share = function () {};
+    var support = [].map && document.createElement("canvas").getContext;
+    if (support) {
+	 
+        egret_h5.startGame();
+    }
+    else {
+        alert("Egret 不支持您当前的浏览器")
+    }
+</script>
+
 </body>
 </html>

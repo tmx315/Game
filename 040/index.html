@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>孟轩官网039</title>
+<link rel="icon" href="https://mxw315.pages.dev/mxw002.jpg" type="image/png">
+<style>
+  body {
+    background-image: url('https://mxw315.pages.dev/mxw001.jpg'); /* 设置背景图片为网址 */
+    background-repeat: no-repeat; /* 背景图片不重复 */
+    background-attachment: scroll; /* 背景图片跟随滚动条滚动 */
+    background-size: cover; /* 背景图片覆盖整个容器，保持宽高比 */
+    background-position: center; /* 背景图片居中显示 */
+  }
+</style>
+		<style type="text/css">
+            canvas {
+                display: block;
+                margin: 50px auto;
+                box-shadow: -2px -2px 2px #efefef, 5px 5px 5px #b9b9b9;
+                cursor: pointer;
+            }
+            .btn-wrap { 
+                display: flex; 
+                flex-direction: row; 
+                justify-content:center;
+            }
+            .btn-wrap div { 
+                margin: 0 10px;
+            }
+            div>span {
+                display: inline-block;
+                padding: 10px 20px;
+                color: #fff;
+                background-color: #EE82EE;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            div.unable span { 
+                background: #D6D6D4; 
+                color: #adacaa;
+            }
+            #result-wrap {text-align: center;}
+		</style>
+		<style id="tsbrowser_video_independent_player_style" type="text/css">  
+		    [tsbrowser_force_max_size] {
+		    	width: 100% !important;                                                      
+		    	height: 100% !important;                                                     
+		    	left: 0px !important;                                                        
+		    	top: 0px !important;                                                         
+		    	margin: 0px !important;                                                      
+		    	padding: 0px !important;}                                                   
+		    [tsbrowser_force_fixed] {                                                      
+		    	position: fixed !important;                                                  
+		    	z-index: 9999 !important;                                                    
+		    	background: black !important;}                                                                            
+		    [tsbrowser_force_hidden] {                                                     
+		    	opacity: 0 !important;                                                       
+		    	z-index: 0 !important; }                                                                            
+		    [tsbrowser_hide_scrollbar] {                                                   
+		    	overflow: hidden !important;}
+		</style>
+	</head>
+	<body>
+        <h3 id="result-wrap">--孟轩官网039益智五子棋--</h3>
+        <canvas id="chess" width="450px" height="450px"></canvas>
+        <div class="btn-wrap">
+            <div id="restart" class="restart">
+                <span>重新开始</span>
+            </div>
+            <div id="goback" class="goback unable">
+                <span>悔棋</span>
+            </div>
+            <div id="return" class="return unable">
+                <span>撤销悔棋</span>
+            </div>
+        </div>
+        <script type="text/javascript" charset="utf-8" src="js/test.js"></script>
+</body>
+</html>
