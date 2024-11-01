@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+<meta charset="UTF-8">
+<title>孟轩官网042</title>
+<link rel="icon" href="https://mxw315.pages.dev/mxw002.jpg" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+<main class="game-container">
+	<h1>水果和蔬菜?</h1>
+	<div id="content"></div>
+</main>
+
+<template id="menuContent">
+	<section class="menu-content">
+	<p>
+		什么是水果？什么是蔬菜？把你的知识放到测试中，看看你是怎么做的！快点，比赛进行得越快。
+	</p>
+		<hr>
+		<div class="instructions--controls">
+			<div class="instructions--controls__screen">
+				<h2>游戏控制</h2>
+				<p>使用屏幕上的按钮来猜测食物是水果还是蔬菜。</p>
+			</div>
+			<div class="instructions--controls__keyboard">
+				<h2>键盘控制</h2>
+				<ul class="key-list">
+					<li>
+						<span class="key">A</span> - 水果
+					</li>
+					<li>
+						<span class="key">S</span> - 都不是
+					</li>
+					<li>
+						<span class="key">D</span> - 蔬菜
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="optional-emojis">
+			<input type="checkbox" id="optionalEmojis">
+			<label for="optionalEmojis">附加的emoji 12.0符号（部分设备支持）</label>
+		</div>
+	<button type="button" class="btn btn--rg btn--start" id="btnStart">开始!</button>
+	</section>
+</template>
+
+<template id="gameContent">
+	<section class="game">
+		<div class="display" id="display">
+			<div id="countdown" class="countdown"></div>
+			<div id="emoji" class="emoji">&nbsp;</div>
+		</div>
+		<div class="score">
+			分数:&nbsp;
+			<span id="score">0</span> / <span id="total">0</span>
+		</div>
+		<section class="controls" id="controls">
+			<button type="button" class="btn btn--rg btn--fruit" id="btnFruit" disabled>水果</button>
+			<button type="button" class="btn btn--rg btn--neither" id="btnNeither" disabled>两者都不是</button>
+			<button type="button" class="btn btn--rg btn--veggie" id="btnVeg" disabled>蔬菜</button>
+		</section>
+	</section>
+</template>
+
+<template id="endContent">
+	<div class="end">
+		<p>祝贺你！你做了50轮“水果或蔬菜”。</p>
+		<button type="button" class="btn btn--rg btn--reset" id="btnReset">再来一次?</button>
+	</div>
+</template>
+  
+<script src="js/script.js"></script>
+
+</body>
+</html>
