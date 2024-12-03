@@ -9,8 +9,14 @@
 <body>
 	<div>
 		<style>
-			* { box-sizing: border-box; } body {margin: 0;}body{background-image:url(img/mxw001.jpg");background-repeat:no-repeat;background-attachment:scroll;background-size:cover;background-position-x:center;background-position-y:center;}.c5951{display:none;}.c5916{display:none;}.c5881{display:none;}.c5856{font-weight:bold;line-height:20px;fo-size:30px;color:#0000FF;}.c17895{padding:10px;color:#000000;background-color:#67e80d;}
+			* { box-sizing: border-box; } body {margin: 0;}body{background-image:url(img/mxw001.jpg");background-repeat:no-repeat;background-attachment:scroll;background-size:cover;background-position-x:center;background-position-y:center;}.c5951{display:none;}.c5916{display:none;}.c5881{display:none;}.c5856{font-weight:bold;line-height:20px;fo-size:30px;color:#0000FF;}.c9820{color:black;width:50px;height:52px;}.c17895{padding:10px;color:#000000;background-color:#67e80d;}
 		</style>
+		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>孟轩网315</title>
+		<meta name="description" content="孟轩网" />
+		<meta name="generator" content="VitePress v1.3.5" />
 		<style>
 			body {
 			                                 background-image: url('./mxw001.jpg'); /* 设置背景图片为网址 */
@@ -20,12 +26,6 @@
 			                                 background-position: center; /* 背景图片居中显示 */
 			}
 		</style>
-		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-		<title>孟轩网315</title>
-		<meta name="description" content="孟轩网" />
-		<meta name="generator" content="VitePress v1.3.5" />
 		<link rel="preload stylesheet" href="css/style.cSHzFneL.css" as="style" />
 		<link rel="preload" href="fonts/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="" />
 		<link rel="modulepreload" href="js/framework.DAuRlsJR.js" />
@@ -43,7 +43,7 @@
 						<div data-v-5bb34321="" class="wrapper">
 							<div data-v-5bb34321="" class="container">
 								<div data-v-5bb34321="" class="title">
-									<div data-v-5bb34321="" data-v-7e7000f3="" class="VPNavBarTitle"><a href="./index.html" data-v-7e7000f3="" class="title"><!--[--><!--]--><!--[--><!--]--><span data-v-7e7000f3="">孟轩网315</span><!--[--><!--]--></a></div>
+									<div data-v-5bb34321="" data-v-7e7000f3="" class="VPNavBarTitle"><a href="./index.html" data-v-7e7000f3="" class="title"><!--[--><!--]--><!--[--><!--]--><span data-v-7e7000f3="">孟轩网315</span><!--[--><!--]--></a><img src="img/mxw002.jpg" class="c9820" /></div>
 								</div>
 								<div data-v-5bb34321="" class="content">
 									<div data-v-5bb34321="" class="content-body"><!--[--><!--]-->
@@ -91,15 +91,16 @@
 															class="c5951">访客数<span id="busuanzi_value_site_uv"></span>人次 | 📢公告1：特别感谢（快手）恋雨如止 | chen-0625-yu0905 | 孟轩网315 探索网页的无限可能 | 记住网址哦www.mxw315.cfd </span></span></span></div>
 										</marquee>
 									</div>
-									<div id="iwbsjl" class="c17895">来都来了玩玩&lt;网页游戏&gt;再走呗，点击&lt;网页游戏&gt;获取更多资源</div>
+									<p data-v-502fab92="" class="tagline">📢公告：点击&lt;网页游戏&gt;获取更多资源！ <!--]--><!--[--><!--]--></p>
+									<div id="iwbsjl" class="c17895">孟轩网首页升级中...<br />来都来了玩玩&lt;网页游戏&gt;再走呗</div>
 									<div data-v-502fab92="" class="actions"><!--[-->
-										<div data-v-502fab92="" class="action"><a href="https://tmx315.lanzouk.com/b00uyfb24d" data-v-502fab92="" data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">下载孟轩网</a><a href="./019.html" data-v-502fab92="" data-v-d8218fcc=""
-												class="VPButton medium brand">网页游戏</a><a href="https://mxw315.pages.dev" data-v-502fab92="" data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">备用网址1</a><a href="https://www.mxw315.cfd" data-v-502fab92="" data-v-d8218fcc=""
-												se_prerender_url="complete" class="VPButton medium brand">备用网址2</a><a href="https://www.mxw315.top" data-v-502fab92="" data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">备用网址3</a></div>
-										<div data-v-502fab92="" class="action"></div>
+										<div data-v-502fab92="" class="action"><a href="https://tmx315.lanzouk.com/b00uyfb24d" data-v-502fab92="" data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">孟轩官网最新版下载</a></div>
+										<div data-v-502fab92="" class="action"><a href="https://www.mxw315.cfd/" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">备用网址1</a></div>
+										<div data-v-502fab92="" class="action"><a href="https://www.mxw315.top/" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">备用网址2</a></div>
+										<div data-v-502fab92="" class="action"><a href="https://mxw315.pages.dev/" target="_blank" rel="noreferrer" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">备用网址3</a></div>
 										<div data-v-502fab92="" class="actions"><!--[-->
-											<div data-v-502fab92="" class="action"><a href="./019.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">网页游戏</a><a href="./009.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">感谢名单</a></div>
-											<div data-v-502fab92="" class="action"><a href="./029/index.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">羊了个羊-升级版</a></div>
+											<div data-v-502fab92="" class="action"><a href="./019.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">网页游戏</a></div>
+											<div data-v-502fab92="" class="action"><a href="./009.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">感谢名单</a></div>
 											<div data-v-502fab92="" class="action"><a href="./028/index.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">捕鱼玩家</a></div>
 											<div data-v-502fab92="" class="action"><a href="./032/index.html" target="_blank" rel="noreferrer" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">喂饱青蛙</a></div><!--]-->
 										</div><!--]-->
@@ -166,7 +167,7 @@
 										<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
 											<article data-v-b2fee82c="" class="box"><!---->
 												<h2 data-v-b2fee82c="" class="title">⑥支持孟轩😃</h2>
-												<p data-v-b2fee82c="" class="details">记住网址哦www.mxw315.cfd<br />记住网址哦www.mxw315.top</p><!---->
+												<p data-v-b2fee82c="" class="details">记住网址哦www.mxw315.cfd</p><!---->
 											</article><!--]-->
 										</div>
 									</div>
@@ -193,7 +194,7 @@
 				</div>
 				<footer data-v-e2af0aff="" data-v-c70eb9e7="" class="VPFooter">
 					<div data-v-c70eb9e7="" class="container">
-						<p data-v-c70eb9e7="" class="copyright">孟轩网</p>
+						<p data-v-c70eb9e7="" class="copyright">孟轩官网</p>
 					</div>
 					<div data-v-c70eb9e7="" class="container">
 						<p data-v-c70eb9e7="" class="copyright">版权所有 © 2024 孟轩科技--mxkj</p>
@@ -431,5 +432,5 @@
 			document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));
 		</script>
 	</div>
-</body>
+<!-- Cloudflare Pages Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c032e1659e914570a3d5f194a534da1d"}'></script><!-- Cloudflare Pages Analytics --></body>
 </html>
