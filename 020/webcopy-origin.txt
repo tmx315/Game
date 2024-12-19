@@ -1,0 +1,72 @@
+Uri: https://js.users.51.la/21818325.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\21818325.js
+Content Type: application/javascript
+
+Uri: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\pagead\js\f.txt
+Content Type: text/javascript
+
+Uri: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9303372309618451
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\pagead\js\f-1.txt
+Content Type: text/javascript
+
+Uri: https://static.mipa.fun/master/game/tower/cover.png
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\master\game\tower\cover.png
+Content Type: image/png
+
+Uri: https://static.mipa.fun/master/game/xiaoxiaokan/cover.png
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\master\game\xiaoxiaokan\cover.png
+Content Type: image/png
+
+Uri: https://www.wan1234.com/favicon.ico
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\favicon.ico
+Content Type: image/x-icon
+
+Uri: https://www.wan1234.com/favicon.png
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\favicon.png
+Content Type: image/png
+
+Uri: https://www.wan1234.com/game/tanchishedazuozhan/play/
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\game\tanchishedazuozhan\play\index.htm
+Content Type: text/html
+
+Uri: https://www.wan1234.com/_nuxt/16cea50.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\16cea50.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/2e5d527.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\2e5d527.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/4961d8a.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\4961d8a.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/854bbce.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\854bbce.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/af449bf.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\af449bf.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/b32fe87.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\b32fe87.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/manifest.0579de71.json
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\manifest.0579de71.json
+Content Type: application/json
+
+Uri: https://www.wan1234.com/_nuxt/static/1713687016/game/tanchishedazuozhan/play/payload.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\static\1713687016\game\tanchishedazuozhan\play\payload.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/static/1713687016/game/tanchishedazuozhan/play/state.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\static\1713687016\game\tanchishedazuozhan\play\state.js
+Content Type: application/javascript
+
+Uri: https://www.wan1234.com/_nuxt/static/1713687016/manifest.js
+File Name: C:\Users\Administrator\Desktop\065\www.wan1234.com\_nuxt\static\1713687016\manifest.js
+Content Type: application/javascript
+
