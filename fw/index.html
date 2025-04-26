@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FW工作室</title>
-    <link href="https://fonts.googleapis.ccom/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- 修正后的Google字体链接 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +21,6 @@
             min-height: 100vh;
         }
 
-        /* 欢迎提示 */
         #welcome-message {
             position: fixed;
             top: 20px;
@@ -36,7 +35,6 @@
             font-size: 14px;
         }
 
-        /* 主标题 */
         .main-header {
             text-align: center;
             padding: 2rem 1rem;
@@ -48,7 +46,6 @@
             margin-top: 20px;
         }
 
-        /* 公告栏容器 */
         .announcement-bar {
             display: flex;
             flex-direction: column;
@@ -73,7 +70,6 @@
             animation: marquee 20s linear infinite;
         }
 
-        /* 导航按钮 */
         .nav-buttons {
             display: flex;
             gap: 0.8rem;
@@ -99,7 +95,6 @@
             box-shadow: 0 5px 15px rgba(107,72,255,0.3);
         }
 
-        /* 公告板样式 */
         .notice-board {
             background: rgba(255,255,255,0.95);
             margin: 1.5rem;
@@ -131,7 +126,6 @@
             font-size: 0.95rem;
         }
 
-        /* 编辑按钮 */
         .edit-button {
             background: #6b48ff;
             color: white;
@@ -151,7 +145,6 @@
             transform: translateY(-1px);
         }
 
-        /* 模态框样式 */
         .modal {
             display: none;
             position: fixed;
@@ -191,7 +184,6 @@
             color: #333;
         }
 
-        /* 密码输入框 */
         #passwordInput {
             width: 100%;
             padding: 0.8rem;
@@ -207,7 +199,6 @@
             outline: none;
         }
 
-        /* 编辑器样式 */
         .notice-editor {
             width: 100%;
             min-height: 200px;
@@ -221,7 +212,6 @@
             margin-top: 1rem;
         }
 
-        /* 图片网格 */
         .image-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -249,7 +239,6 @@
             object-fit: cover;
         }
 
-        /* 下载覆盖层 */
         .download-overlay {
             position: absolute;
             top: 0;
@@ -287,7 +276,6 @@
             display: flex;
         }
 
-        /* 页脚 */
         footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -296,7 +284,6 @@
             margin-top: 2rem;
         }
 
-        /* 动画 */
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
@@ -307,7 +294,6 @@
             100% { transform: translate(-50%, 0); }
         }
 
-        /* 响应式设计 */
         @media (min-width: 768px) {
             .main-header {
                 font-size: 3rem;
@@ -361,13 +347,10 @@
     </style>
 </head>
 <body>
-    <!-- 欢迎提示 -->
     <div id="welcome-message">欢迎访问FW工作室！</div>
     
-    <!-- 主标题 -->
     <h1 class="main-header">FW Studio</h1>
 
-    <!-- 公告栏 -->
     <div class="announcement-bar">
         <div class="marquee">
             <span>🎉 最新公告：夏季特别优惠进行中！本站非孟轩网官方运营，请注意隐私及财产安全！</span>
@@ -385,7 +368,6 @@
         </div>
     </div>
 
-    <!-- 公告板 -->
     <div class="notice-board">
         <div class="notice-title">
             最新公告
@@ -396,7 +378,6 @@
         <div class="notice-content">正在加载公告...</div>
     </div>
 
-    <!-- 图片展示区 -->
     <div class="image-grid">
         <div class="image-item">
             <img src="https://picsum.photos/600/400?random=1" alt="设计案例1">
@@ -418,7 +399,6 @@
         </div>
     </div>
 
-    <!-- 密码验证模态框 -->
     <div id="passwordModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">×</span>
@@ -430,35 +410,27 @@
         </div>
     </div>
 
-    <!-- 页脚 -->
     <footer>
         <p>© 2025 FW工作室. 保留所有权利</p>
-        <p style="margin-top: 0.5rem;">本站与孟轩网无隶属关系</p>
+        <p style="margin-top: 0.5rem;">本站与孟轩网无关</p>
     </footer>
 
     <script>
-        // 初始化Supabase（请替换为你的项目信息）
-        const supabase = createClient(
+        // 修复后的Supabase初始化方式
+        const supabase = window.supabase.createClient(
             'https://hhcxqilulapczihvmpoe.supabase.co',
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoY3hxaWx1bGFwY3ppaHZtcG9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU0OTgwNzUsImV4cCI6MjA2MTA3NDA3NX0.HCP-se64Be932yfpPXmnAplb9WweWQF9gdTHHCc_zso'
         );
 
-        // DOM加载完成后初始化
         document.addEventListener('DOMContentLoaded', () => {
-            // 隐藏欢迎提示
             const welcomeMessage = document.getElementById('welcome-message');
             setTimeout(() => {
                 welcomeMessage.style.display = 'none';
             }, 3000);
-
-            // 加载公告内容
             loadNotice();
-
-            // 绑定下载事件
             initDownloadButtons();
         });
 
-        // 加载公告函数
         async function loadNotice() {
             try {
                 const { data, error } = await supabase
@@ -477,25 +449,21 @@
             }
         }
 
-        // 编辑按钮点击处理
         document.getElementById('edit-notice-btn').addEventListener('click', () => {
             showModal();
         });
 
-        // 显示模态框
         function showModal() {
             const modal = document.getElementById('passwordModal');
             modal.style.display = 'block';
             document.getElementById('passwordInput').focus();
         }
 
-        // 关闭模态框
         function hideModal() {
             document.getElementById('passwordModal').style.display = 'none';
             document.getElementById('passwordInput').value = '';
         }
 
-        // 模态框关闭处理
         document.querySelector('.modal-close').addEventListener('click', hideModal);
         window.addEventListener('click', (event) => {
             if (event.target.classList.contains('modal')) {
@@ -503,7 +471,6 @@
             }
         });
 
-        // 密码验证处理
         document.getElementById('submitPassword').addEventListener('click', async () => {
             const password = document.getElementById('passwordInput').value.trim();
             if (!password) return showError('请输入密码');
@@ -530,23 +497,19 @@
             }
         });
 
-        // 启用编辑模式
         function enableEditMode() {
             const container = document.querySelector('.notice-content');
             const currentContent = container.textContent;
 
-            // 创建编辑区域
             const editor = document.createElement('textarea');
             editor.className = 'notice-editor';
             editor.value = currentContent;
 
-            // 创建操作按钮容器
             const buttonGroup = document.createElement('div');
             buttonGroup.style.display = 'flex';
             buttonGroup.style.gap = '1rem';
             buttonGroup.style.marginTop = '1rem';
 
-            // 保存按钮
             const saveBtn = createButton('保存修改', 'fa-save', async () => {
                 try {
                     const { error } = await supabase
@@ -566,21 +529,18 @@
                 }
             });
 
-            // 取消按钮
             const cancelBtn = createButton('取消编辑', 'fa-times', () => {
                 editor.replaceWith(container);
                 buttonGroup.remove();
             });
             cancelBtn.style.background = '#ff4757';
 
-            // 组装元素
             buttonGroup.append(saveBtn, cancelBtn);
             container.replaceWith(editor);
             editor.after(buttonGroup);
             editor.focus();
         }
 
-        // 通用按钮创建函数
         function createButton(text, icon, onClick) {
             const btn = document.createElement('button');
             btn.className = 'nav-button';
@@ -589,20 +549,16 @@
             return btn;
         }
 
-        // 下载功能初始化
         function initDownloadButtons() {
-            // 绑定下载按钮
             document.querySelectorAll('.download-btn').forEach(btn => {
                 btn.addEventListener('click', handleDownload);
             });
 
-            // 右键保存处理
             document.querySelectorAll('.image-item img').forEach(img => {
                 img.addEventListener('contextmenu', handleRightClick);
             });
         }
 
-        // 下载处理函数
         async function handleDownload(event) {
             const btn = event.currentTarget;
             const imgUrl = btn.dataset.src;
@@ -616,7 +572,6 @@
             }
         }
 
-        // 右键点击处理
         function handleRightClick(event) {
             event.preventDefault();
             if (confirm('是否要保存此图片？')) {
@@ -625,7 +580,6 @@
             }
         }
 
-        // 通用图片下载函数
         async function downloadImage(url, filename) {
             try {
                 const response = await fetch(url);
@@ -648,7 +602,6 @@
             }
         }
 
-        // 消息提示函数
         function showError(message) {
             const toast = document.createElement('div');
             toast.textContent = message;
@@ -687,7 +640,6 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // 定义动画
         const style = document.createElement('style');
         style.textContent = `
             @keyframes slideUp {
