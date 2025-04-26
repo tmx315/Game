@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FW工作室</title>
-    <link href="https://fonts.font.im/css?family=Poppins:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.ccom/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
@@ -20,6 +21,7 @@
             min-height: 100vh;
         }
 
+        /* 欢迎提示 */
         #welcome-message {
             position: fixed;
             top: 20px;
@@ -31,54 +33,65 @@
             border-radius: 25px;
             animation: slideDown 1s ease-out;
             z-index: 1000;
+            font-size: 14px;
         }
 
+        /* 主标题 */
         .main-header {
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             background: linear-gradient(45deg, #6b48ff, #00a8ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-top: 20px;
         }
 
+        /* 公告栏容器 */
         .announcement-bar {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 1rem;
             background: rgba(255,255,255,0.9);
-            padding: 1rem 2rem;
-            margin: 0 2rem;
+            padding: 1rem;
+            margin: 1rem;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             backdrop-filter: blur(10px);
         }
 
         .marquee {
-            flex-grow: 1;
             white-space: nowrap;
             overflow: hidden;
+            font-size: 0.9rem;
         }
 
         .marquee span {
             display: inline-block;
             padding-left: 100%;
-            animation: marquee 15s linear infinite;
+            animation: marquee 20s linear infinite;
         }
 
+        /* 导航按钮 */
         .nav-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .nav-button {
             background: linear-gradient(45deg, #6b48ff, #00a8ff);
             color: white;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             text-decoration: none;
-            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .nav-button:hover {
@@ -86,65 +99,157 @@
             box-shadow: 0 5px 15px rgba(107,72,255,0.3);
         }
 
+        /* 公告板样式 */
         .notice-board {
-            background: rgba(255,255,255,0.9);
-            margin: 2rem;
-            padding: 2rem;
+            background: rgba(255,255,255,0.95);
+            margin: 1.5rem;
+            padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            position: relative;
         }
 
         .notice-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: #333;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #6b48ff;
-            padding-left: 1rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .notice-content {
-            line-height: 1.8;
-            color: #555;
+            line-height: 1.7;
+            color: #444;
             white-space: pre-line;
             text-align: justify;
             max-height: 400px;
             overflow-y: auto;
             padding: 1rem;
-            background: rgba(245, 247, 250, 0.5);
+            background: rgba(245, 247, 250, 0.6);
             border-radius: 8px;
+            font-size: 0.95rem;
         }
 
+        /* 编辑按钮 */
+        .edit-button {
+            background: #6b48ff;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .edit-button:hover {
+            background: #5d3acf;
+            transform: translateY(-1px);
+        }
+
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9999;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 400px;
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 1.2rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        /* 密码输入框 */
+        #passwordInput {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1.2rem 0;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        #passwordInput:focus {
+            border-color: #6b48ff;
+            outline: none;
+        }
+
+        /* 编辑器样式 */
+        .notice-editor {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 2px solid #6b48ff;
+            border-radius: 8px;
+            resize: vertical;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        /* 图片网格 */
         .image-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .image-item {
             position: relative;
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
             transition: transform 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .image-item:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .image-item img {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
         }
 
+        /* 下载覆盖层 */
         .download-overlay {
             position: absolute;
             top: 0;
@@ -155,18 +260,19 @@
             display: none;
             align-items: center;
             justify-content: center;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
         }
 
         .download-btn {
-            background: rgba(255,255,255,0.9);
-            padding: 12px 20px;
-            border-radius: 25px;
+            background: rgba(255,255,255,0.95);
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            transition: transform 0.3s ease;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
         .download-btn i {
@@ -181,98 +287,16 @@
             display: flex;
         }
 
+        /* 页脚 */
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 2rem 1rem;
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            margin-top: 2rem;
         }
 
-        /* 新增编辑相关样式 */
-        .edit-button {
-            background: #ff4757;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            outline: none;
-        }
-
-        .edit-button:hover {
-            background: #ff6b81;
-            transform: translateY(-2px);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 9999;
-            backdrop-filter: blur(3px);
-        }
-
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 400px;
-            padding: 30px;
-            border-radius: 15px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .modal-close {
-            position: absolute;
-            right: 20px;
-            top: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #666;
-            transition: color 0.3s ease;
-        }
-
-        .modal-close:hover {
-            color: #333;
-        }
-
-        #passwordInput {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 20px 0;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        #passwordInput:focus {
-            outline: none;
-            border-color: #6b48ff;
-        }
-
-        .notice-editor {
-            width: 100%;
-            height: 300px;
-            padding: 15px;
-            border: 2px solid #6b48ff;
-            border-radius: 8px;
-            resize: vertical;
-            font-family: 'Poppins', sans-serif;
-            font-size: 14px;
-            line-height: 1.6;
-            margin-top: 10px;
-        }
-
+        /* 动画 */
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-100%); }
@@ -283,122 +307,158 @@
             100% { transform: translate(-50%, 0); }
         }
 
-        @media (max-width: 768px) {
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .main-header {
+                font-size: 3rem;
+                padding: 3rem 2rem;
+            }
+
             .announcement-bar {
-                flex-direction: column;
-                gap: 1rem;
-                margin: 0 1rem;
+                flex-direction: row;
+                padding: 1.2rem 2rem;
+                margin: 2rem;
             }
 
-            .nav-buttons {
-                flex-wrap: wrap;
-                justify-content: center;
+            .nav-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
             }
 
+            .notice-board {
+                margin: 2rem;
+                padding: 2rem;
+            }
+
+            .notice-content {
+                font-size: 1rem;
+            }
+
+            .image-grid {
+                gap: 2rem;
+                padding: 2rem;
+            }
+
+            .image-item img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
             .main-header {
                 font-size: 2rem;
             }
 
-            .notice-board {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-            
-            .notice-content {
-                font-size: 0.9rem;
-                max-height: 300px;
+            .nav-button {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
             }
 
-            .download-btn {
-                padding: 8px 15px;
-                font-size: 0.9rem;
-            }
-
-            .modal-content {
-                padding: 20px;
+            .notice-editor {
+                min-height: 150px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 欢迎提示 -->
     <div id="welcome-message">欢迎访问FW工作室！</div>
     
+    <!-- 主标题 -->
     <h1 class="main-header">FW Studio</h1>
 
+    <!-- 公告栏 -->
     <div class="announcement-bar">
         <div class="marquee">
-            <span>🎉 最新公告：夏季特别优惠进行中！本站非孟轩网官方运营，请注意隐私及财产安全!</span>
+            <span>🎉 最新公告：夏季特别优惠进行中！本站非孟轩网官方运营，请注意隐私及财产安全！</span>
         </div>
         <div class="nav-buttons">
-            <a href="https://www.mxw315.top" class="nav-button">孟轩网</a>
-            <a href="https://www.mxw315.top/019/index.html" class="nav-button">网页游戏</a>
-            <a href="https://share.acedata.cloud/r/1uKi0QtXBH" class="nav-button">孟轩网AI</a>
+            <a href="https://www.mxw315.top" class="nav-button">
+                <i class="fas fa-globe"></i> 孟轩网
+            </a>
+            <a href="https://www.mxw315.top/019/index.html" class="nav-button">
+                <i class="fas fa-gamepad"></i> 网页游戏
+            </a>
+            <a href="https://share.acedata.cloud/r/1uKi0QtXBH" class="nav-button">
+                <i class="fas fa-robot"></i> 孟轩AI
+            </a>
         </div>
     </div>
 
+    <!-- 公告板 -->
     <div class="notice-board">
         <div class="notice-title">
-            公告栏
+            最新公告
             <button class="edit-button" id="edit-notice-btn">
                 <i class="fas fa-edit"></i> 编辑
             </button>
         </div>
-        <div class="notice-content">加载公告中...</div>
+        <div class="notice-content">正在加载公告...</div>
     </div>
 
+    <!-- 图片展示区 -->
     <div class="image-grid">
         <div class="image-item">
-            <img src="https://picsum.photos/600/400" alt="设计案例1">
+            <img src="https://picsum.photos/600/400?random=1" alt="设计案例1">
             <div class="download-overlay">
-                <div class="download-btn" data-src="https://picsum.photos/600/400">
+                <div class="download-btn" data-src="https://picsum.photos/600/400?random=1">
                     <i class="fas fa-download"></i>
-                    <span>保存图片</span>
+                    <span>下载图片</span>
                 </div>
             </div>
         </div>
         <div class="image-item">
-            <img src="https://picsum.photos/601/400" alt="设计案例2">
+            <img src="https://picsum.photos/600/400?random=2" alt="设计案例2">
             <div class="download-overlay">
-                <div class="download-btn" data-src="https://picsum.photos/601/400">
+                <div class="download-btn" data-src="https://picsum.photos/600/400?random=2">
                     <i class="fas fa-download"></i>
-                    <span>保存图片</span>
+                    <span>下载图片</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- 密码验证模态框 -->
     <div id="passwordModal" class="modal">
         <div class="modal-content">
             <span class="modal-close">×</span>
-            <h3 style="margin-bottom: 15px;">管理员验证</h3>
-            <input type="password" id="passwordInput" placeholder="请输入管理员密码">
-            <button id="submitPassword" class="nav-button" style="width: 100%;">
-                <i class="fas fa-lock"></i> 验证
+            <h3 style="margin-bottom: 1.5rem;">管理员验证</h3>
+            <input type="password" id="passwordInput" placeholder="请输入管理员密码" autocomplete="current-password">
+            <button id="submitPassword" class="nav-button" style="width: 100%; margin-top: 1rem;">
+                <i class="fas fa-unlock-alt"></i> 立即验证
             </button>
         </div>
     </div>
 
+    <!-- 页脚 -->
     <footer>
-        <p>© 2025 FW工作室. All Rights Reserved.</p>
-        <p>本站非孟轩网运营</p>
+        <p>© 2025 FW工作室. 保留所有权利</p>
+        <p style="margin-top: 0.5rem;">本站与孟轩网无隶属关系</p>
     </footer>
 
     <script>
-        // 初始化Supabase（替换为你的项目信息）
+        // 初始化Supabase（请替换为你的项目信息）
         const supabase = createClient(
             'https://hhcxqilulapczihvmpoe.supabase.co',
             'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoY3hxaWx1bGFwY3ppaHZtcG9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU0OTgwNzUsImV4cCI6MjA2MTA3NDA3NX0.HCP-se64Be932yfpPXmnAplb9WweWQF9gdTHHCc_zso'
         );
 
-        // 欢迎提示控制
-        window.addEventListener('DOMContentLoaded', () => {
-            const welcome = document.getElementById('welcome-message');
+        // DOM加载完成后初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            // 隐藏欢迎提示
+            const welcomeMessage = document.getElementById('welcome-message');
             setTimeout(() => {
-                welcome.style.display = 'none';
+                welcomeMessage.style.display = 'none';
             }, 3000);
+
+            // 加载公告内容
+            loadNotice();
+
+            // 绑定下载事件
+            initDownloadButtons();
         });
 
-        // 加载公告内容
+        // 加载公告函数
         async function loadNotice() {
             try {
                 const { data, error } = await supabase
@@ -408,35 +468,46 @@
                     .single();
 
                 if (error) throw error;
-                document.querySelector('.notice-content').textContent = data.content;
+                
+                const contentElement = document.querySelector('.notice-content');
+                contentElement.textContent = data.content || '暂无公告';
             } catch (error) {
-                console.error('加载公告失败:', error);
-                document.querySelector('.notice-content').textContent = '公告加载失败，请稍后重试';
+                console.error('公告加载失败:', error);
+                showError('公告加载失败，请刷新重试');
             }
         }
 
         // 编辑按钮点击处理
         document.getElementById('edit-notice-btn').addEventListener('click', () => {
-            document.getElementById('passwordModal').style.display = 'block';
+            showModal();
         });
 
-        // 关闭模态框处理
-        document.querySelector('.modal-close').addEventListener('click', () => {
-            document.getElementById('passwordModal').style.display = 'none';
-        });
-
-        // 点击模态框外部关闭
-        window.onclick = function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
+        // 显示模态框
+        function showModal() {
+            const modal = document.getElementById('passwordModal');
+            modal.style.display = 'block';
+            document.getElementById('passwordInput').focus();
         }
+
+        // 关闭模态框
+        function hideModal() {
+            document.getElementById('passwordModal').style.display = 'none';
+            document.getElementById('passwordInput').value = '';
+        }
+
+        // 模态框关闭处理
+        document.querySelector('.modal-close').addEventListener('click', hideModal);
+        window.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal')) {
+                hideModal();
+            }
+        });
 
         // 密码验证处理
         document.getElementById('submitPassword').addEventListener('click', async () => {
-            const password = document.getElementById('passwordInput').value;
-            if (!password) return alert('请输入密码');
-            
+            const password = document.getElementById('passwordInput').value.trim();
+            if (!password) return showError('请输入密码');
+
             try {
                 const { data, error } = await supabase
                     .from('notices')
@@ -447,15 +518,15 @@
                 if (error) throw error;
                 
                 if (data.password === password) {
+                    hideModal();
                     enableEditMode();
-                    document.getElementById('passwordModal').style.display = 'none';
                 } else {
-                    alert('密码错误');
+                    showError('密码错误');
                     document.getElementById('passwordInput').value = '';
                 }
             } catch (error) {
                 console.error('验证失败:', error);
-                alert('验证失败，请检查网络连接');
+                showError('验证失败，请检查网络');
             }
         });
 
@@ -469,25 +540,14 @@
             editor.className = 'notice-editor';
             editor.value = currentContent;
 
-            // 创建按钮容器
-            const buttonContainer = document.createElement('div');
-            buttonContainer.style.marginTop = '15px';
-            buttonContainer.style.display = 'flex';
-            buttonContainer.style.gap = '10px';
+            // 创建操作按钮容器
+            const buttonGroup = document.createElement('div');
+            buttonGroup.style.display = 'flex';
+            buttonGroup.style.gap = '1rem';
+            buttonGroup.style.marginTop = '1rem';
 
-            // 创建保存按钮
-            const saveBtn = document.createElement('button');
-            saveBtn.className = 'nav-button';
-            saveBtn.innerHTML = '<i class="fas fa-save"></i> 保存修改';
-
-            // 创建取消按钮
-            const cancelBtn = document.createElement('button');
-            cancelBtn.className = 'nav-button';
-            cancelBtn.style.background = '#ff4757';
-            cancelBtn.innerHTML = '<i class="fas fa-times"></i> 取消';
-            
-            // 保存处理
-            saveBtn.onclick = async () => {
+            // 保存按钮
+            const saveBtn = createButton('保存修改', 'fa-save', async () => {
                 try {
                     const { error } = await supabase
                         .from('notices')
@@ -498,71 +558,144 @@
                     
                     container.textContent = editor.value;
                     editor.replaceWith(container);
-                    buttonContainer.remove();
-                    alert('修改已保存');
+                    buttonGroup.remove();
+                    showSuccess('修改已保存');
                 } catch (error) {
                     console.error('保存失败:', error);
-                    alert('保存失败，请稍后重试');
+                    showError('保存失败，请重试');
                 }
-            };
+            });
 
-            // 取消处理
-            cancelBtn.onclick = () => {
+            // 取消按钮
+            const cancelBtn = createButton('取消编辑', 'fa-times', () => {
                 editor.replaceWith(container);
-                buttonContainer.remove();
-            };
+                buttonGroup.remove();
+            });
+            cancelBtn.style.background = '#ff4757';
 
             // 组装元素
-            buttonContainer.appendChild(saveBtn);
-            buttonContainer.appendChild(cancelBtn);
-            
-            // 替换内容
+            buttonGroup.append(saveBtn, cancelBtn);
             container.replaceWith(editor);
-            editor.after(buttonContainer);
+            editor.after(buttonGroup);
             editor.focus();
         }
 
-        // 图片下载功能
+        // 通用按钮创建函数
+        function createButton(text, icon, onClick) {
+            const btn = document.createElement('button');
+            btn.className = 'nav-button';
+            btn.innerHTML = `<i class="fas ${icon}"></i> ${text}`;
+            btn.onclick = onClick;
+            return btn;
+        }
+
+        // 下载功能初始化
+        function initDownloadButtons() {
+            // 绑定下载按钮
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', handleDownload);
+            });
+
+            // 右键保存处理
+            document.querySelectorAll('.image-item img').forEach(img => {
+                img.addEventListener('contextmenu', handleRightClick);
+            });
+        }
+
+        // 下载处理函数
+        async function handleDownload(event) {
+            const btn = event.currentTarget;
+            const imgUrl = btn.dataset.src;
+            const altText = btn.closest('.image-item').querySelector('img').alt;
+            
+            try {
+                await downloadImage(imgUrl, altText);
+                showSuccess('下载开始...');
+            } catch (error) {
+                showError('下载失败，请右键另存为');
+            }
+        }
+
+        // 右键点击处理
+        function handleRightClick(event) {
+            event.preventDefault();
+            if (confirm('是否要保存此图片？')) {
+                const img = event.target;
+                downloadImage(img.src, img.alt);
+            }
+        }
+
+        // 通用图片下载函数
         async function downloadImage(url, filename) {
             try {
                 const response = await fetch(url);
+                if (!response.ok) throw new Error('网络响应异常');
+                
                 const blob = await response.blob();
                 const downloadUrl = window.URL.createObjectURL(blob);
                 
                 const a = document.createElement('a');
                 a.href = downloadUrl;
-                a.download = filename || 'design-image.jpg';
+                a.download = `${filename || 'design'}-${Date.now()}.jpg`;
                 document.body.appendChild(a);
                 a.click();
+                
                 window.URL.revokeObjectURL(downloadUrl);
                 document.body.removeChild(a);
             } catch (error) {
-                alert('图片下载失败，请尝试右键另存为');
-                console.error('下载错误:', error);
+                console.error('下载失败:', error);
+                throw error;
             }
         }
 
-        // 绑定下载按钮事件
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const imgUrl = e.currentTarget.dataset.src;
-                const altText = e.currentTarget.closest('.image-item').querySelector('img').alt;
-                downloadImage(imgUrl, `${altText}.jpg`);
-            });
-        });
+        // 消息提示函数
+        function showError(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #ff4757;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                animation: slideUp 0.3s ease-out;
+                z-index: 1000;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
 
-        // 右键保存功能
-        document.querySelectorAll('.image-item img').forEach(img => {
-            img.addEventListener('contextmenu', (e) => {
-                e.preventDefault();
-                if(confirm('是否要保存这张图片？')) {
-                    downloadImage(e.target.src, e.target.alt + '.jpg');
-                }
-            });
-        });
+        function showSuccess(message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #2ed573;
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                animation: slideUp 0.3s ease-out;
+                z-index: 1000;
+            `;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
 
-        // 初始化加载公告
-        document.addEventListener('DOMContentLoaded', loadNotice);
+        // 定义动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideUp {
+                0% { transform: translate(-50%, 100%); }
+                100% { transform: translate(-50%, 0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
