@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern Chat Room</title>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <!-- 生产环境建议使用本地构建的Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-100 min-h-screen">
+    <div class="container mx-auto max-w-2xl p-4">
+        <!-- 用户名设置 -->
+        <div id="username-set" class="mb-6 bg-white rounded-lg p-4 shadow-md">
+            <input type="text" id="username" 
+                   class="w-full p-2 border rounded-lg mb-2"
+                   placeholder="输入用户名">
+            <button onclick="setUsername()" 
+                    class="w-full bg-purple-600 text-white p-2 rounded-lg hover:bg-purple-700 transition-colors">
+                保存用户名
+            </button>
+        </div>
+
+        <!-- 聊天内容 -->
+        <div id="messages" class="space-y-4 mb-4 h-[500px] overflow-y-auto pr-2"></div>
+
+        <!-- 消息输入 -->
+        <div class="bg-white rounded-lg p-4 shadow-md">
+            <div class="flex gap-2">
+                <input type="text" id="message" 
+                       class="flex-1 p-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="输入消息..."
+                       onkeypress="if(event.key === 'Enter') sendMessage()">
+                <button onclick="sendMessage()"
+                        class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                    发送
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script>
+// 初始化Supabase（立即执行函数封装）
+(function() {
+    // 前置声明全局变量
+    window.supabase = supabase.createClient(
+        "https://hhcxqilulapczihvmpoe.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoY3hxaWx1bGFwY3ppaHZtcG9lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDU0OTgwNzUsImV4cCI6MjA2MTA3NDA3NX0.HCP-se64Be932yfpPXmnAplb9WweWQF9gdTHHCc_zso"
+    );
+
+    // 用户系统初始化
+    window.USER_ID = localStorage.getItem('user_id') || crypto.randomUUID();
+    localStorage.setItem('user_id', USER_ID);
+    
+    window.USERNAME = localStorage.getItem('username') || '';
+    window.CURRENT_USER_COLOR = localStorage.getItem('user_color') || 
+        `hsl(${Math.random() * 360}deg 70% 60%)`;
+    localStorage.setItem('user_color', CURRENT_USER_COLOR);
+
+    // 初始化界面
+    if (USERNAME) {
+        document.getElementById('username-set').hidden = true;
+    }
+})();
+
+// 实时消息监听（使用DOMContentLoaded确保元素存在）
+document.addEventListener('DOMContentLoaded', async () => {
+    // 实时监听
+    supabase.channel('realtime-messages')
+        .on('postgres_changes', {
+            event: '*',
+            schema: 'public',
+            table: 'messages'
+        }, (payload) => {
+            const existing = document.getElementById(`msg-${payload.new.id}`);
+            if (existing) existing.remove();
+            if (!payload.new.is_retracted) renderMessage(payload.new);
+        })
+        .subscribe()
+
+    // 加载历史消息
+    const { data, error } = await supabase
+        .from('messages')
+        .select('*')
+        .order('created_at', { ascending: true });
+    
+    if (!error) data.forEach(renderMessage);
+    messagesDivScrollToBottom();
+});
+
+// 渲染消息
+function renderMessage(msg) {
+    const isOwn = msg.user_id === USER_ID;
+    const time = new Date(msg.created_at).toLocaleTimeString('zh-CN', { 
+        hour: '2-digit', 
+        minute: '2-digit' 
+    });
+    
+    const messageEl = document.createElement('div');
+    messageEl.id = `msg-${msg.id}`;
+    messageEl.className = `p-4 rounded-lg shadow-sm transition-all duration-200 ${
+        isOwn ? 'ml-20 bg-blue-50' : 'mr-20 bg-white'
+    }`;
+
+    messageEl.innerHTML = `
+        <div class="flex justify-between items-start mb-2">
+            <div class="font-bold" style="color: ${CURRENT_USER_COLOR}">${msg.username}</div>
+            <div class="text-gray-500 text-sm flex items-center gap-2">
+                <span>${time}</span>
+                ${isOwn ? `<button onclick="retractMessage('${msg.id}')" 
+                        class="text-gray-400 hover:text-gray-600 text-xs">
+                        撤回
+                    </button>` : ''}
+            </div>
+        </div>
+        <div class="mb-2 break-words">${msg.content}</div>
+        <div class="flex items-center gap-2">
+            <button onclick="toggleLike('${msg.id}')" 
+                    class="flex items-center gap-1 text-gray-500 hover:text-red-500 transition-colors">
+                ♥ ${msg.likes_count || 0}
+            </button>
+        </div>
+    `;
+    
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.appendChild(messageEl);
+    messagesDivScrollToBottom();
+}
+
+// 发送消息
+async function sendMessage() {
+    if (!USERNAME) {
+        alert('请先设置用户名');
+        document.getElementById('username-set').hidden = false;
+        return;
+    }
+    
+    const content = document.getElementById('message').value.trim();
+    if (!content) return;
+
+    const { error } = await supabase.from('messages').insert([{
+        content,
+        user_id: USER_ID,
+        username: USERNAME,
+        likes_count: 0
+    }]);
+
+    if (!error) {
+        document.getElementById('message').value = '';
+        document.getElementById('message').focus();
+    }
+}
+
+// 撤回消息
+async function retractMessage(msgId) {
+    const { data: msg, error } = await supabase
+        .from('messages')
+        .select('created_at, user_id')
+        .eq('id', msgId)
+        .single();
+
+    if (error || msg.user_id !== USER_ID) return;
+    
+    const diff = (Date.now() - new Date(msg.created_at).getTime()) / 1000;
+    if (diff > 120) return alert('超过2分钟不能撤回');
+
+    await supabase
+        .from('messages')
+        .update({ is_retracted: true })
+        .eq('id', msgId);
+}
+
+// 点赞功能
+async function toggleLike(msgId) {
+    const { data, error } = await supabase.rpc('toggle_like', {
+        msg_id: msgId,
+        user_id: USER_ID
+    });
+    
+    if (!error) {
+        const button = document.querySelector(`#msg-${msgId} button`);
+        button.innerHTML = `♥ ${data}`;
+        button.classList.toggle('text-red-500', data > parseInt(button.textContent.match(/\d+/)[0]));
+    }
+}
+
+// 设置用户名
+function setUsername() {
+    const newUsername = document.getElementById('username').value.trim();
+    if (!newUsername) return;
+    
+    USERNAME = newUsername;
+    localStorage.setItem('username', USERNAME);
+    document.getElementById('username-set').hidden = true;
+    document.getElementById('message').focus();
+}
+
+// 辅助函数
+function messagesDivScrollToBottom() {
+    const messagesDiv = document.getElementById('messages');
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+}
+</script>
+</body>
+</html>
