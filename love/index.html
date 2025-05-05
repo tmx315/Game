@@ -2,12 +2,18 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" 
+        content="width=device-width, 
+                initial-scale=1.0, 
+                maximum-scale=1.0,
+                minimum-scale=1.0,
+                user-scalable=no">
     <title>可以成为我的恋人吗？</title>
-    <style>
-    /* 方法1: 基础CSS方案 */
-    .lock-scroll {
-      overflow: hidden;
+  <style>
+    /* 禁止页面滚动 */
+    body {
+      overflow: hidden !important;
+      touch-action: none; /* 禁用触摸操作 */
       position: fixed;
       width: 100%;
       height: 100%;
@@ -31,7 +37,27 @@
             <button id="no">不要</button>
         </div>
     </div>
+    
+    <script>
+    // 禁止双指缩放
+    document.addEventListener('gesturestart', function(e) {
+      e.preventDefault();
+    });
 
+    // 禁止触摸滚动
+    document.addEventListener('touchmove', function(e) {
+      if (!e.target.closest('.scrollable')) { // 排除可滚动区域
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    // 禁止键盘滚动（空格/方向键）
+    window.addEventListener('keydown', function(e) {
+      if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+        e.preventDefault();
+      }
+    }, false);
+  </script>
     <script src="script.js"></script>
 </body>
 </html>
