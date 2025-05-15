@@ -1,5 +1,6 @@
 http://192.168.100.1/index.html#wlan_station
 Internet Wi-Fi
+http://192.168.100.1/index.html#child_ctl
 
 http://192.168.100.1/index.html#wlan_guset
 副SSID
