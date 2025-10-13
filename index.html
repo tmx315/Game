@@ -1,415 +1,1034 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="zh-CN">
 <head>
-	<meta charset='utf-8'>
-	<title>孟轩网315</title>
-	<meta name="description" content="孟轩网一个纯净、免费、无广告的游戏网站">
-	<meta name="keywords" content="孟轩网_孟轩网315_网页游戏_H5游戏_在线游戏">
-	<meta name="360-site-verification" content="b2f2e43832bfb11cf952e00502acafec" />
-                <meta name="360-site-verification" content="a5f9a4c4eb425f8ce134aa4495367755" />
-	<meta name="generator" content="VitePress v1.3.5" />
-	<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?e53c8abfa5ead706b525a49b3f2e8acc";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孟轩网 - 游戏中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-                <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
-<script>LA.init({id:"3KkEpLxmzacRhipz",ck:"3KkEpLxmzacRhipz",autoTrack:true,hashMode:true,screenRecord:true})</script>
-<script src="https://sdk.51.la/perf/js-sdk-perf.min.js" crossorigin="anonymous"></script>
-<script>
-  new LingQue.Monitor().init({id:"3KlOuZC0Fi3bgsEF"});
-</script>
-                <link rel="icon" href="/mxw002.jpg" type="image/png" />
-                <script>
-                // 客户端检测
-                if (/mxwkhd4.25.0305/.test(navigator.userAgent)) {
-                window.location.href = 'https://www.mxw315.top/076/001.html';
-             }
-            </script>
+        :root {
+            --primary: #4a6ee0;
+            --primary-dark: #3a5ac8;
+            --secondary: #ff6b6b;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --mc-color: #ff9800;
+            --pvz-color: #4caf50;
+            --visual-color: #9c27b0;
+            --classic-color: #2196f3;
+        }
 
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #3a7bd5, #00d2ff);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .category-tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .category-tab:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .category-tab.active {
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+        }
+
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .game-card-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+            line-height: 1.4;
+        }
+
+        .game-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .game-card .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            background: var(--light);
+            color: var(--gray);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .tag.mc {
+            background: #e1f5fe;
+            color: #0288d1;
+        }
+
+        .tag.pvz {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .tag.visual {
+            background: #fce4ec;
+            color: #c2185b;
+        }
+
+        .tag.classic {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .game-card .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            margin-top: auto;
+        }
+
+        .game-card .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .game-card .btn.pvz {
+            background: var(--pvz-color);
+        }
+
+        .game-card .btn.pvz:hover {
+            background: #3d8b40;
+        }
+
+        .game-card .btn.mc {
+            background: var(--mc-color);
+        }
+
+        .game-card .btn.mc:hover {
+            background: #e68900;
+        }
+
+        .game-card .btn.visual {
+            background: var(--visual-color);
+        }
+
+        .game-card .btn.visual:hover {
+            background: #7b1fa2;
+        }
+
+        .game-card .btn.classic {
+            background: var(--classic-color);
+        }
+
+        .game-card .btn.classic:hover {
+            background: #1976d2;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .game-counter {
+            text-align: center;
+            margin: 10px 0;
+            color: white;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .category-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-	<div>
-		<style>
-			* { box-sizing: border-box; } body {margin: 0;}*{box-sizing:border-box;}body{margin-top:0px;margin-right:0px;margin-bottom:0px;margin-left:0px;background-repeat:no-repeat;background-attachment:scroll;background-size:cover;background-position-x:center;background-position-y:center;background-image:url(/tmx315/mxw315/edit/main/mxw001.jpg");}.c5951{display:none;}.c5916{display:none;}.c5881{display:none;}.c5856{font-weight:bold;line-height:20px;color:rgb(0, 0, 255);}.c17895{padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;color:rgb(0, 0, 0);background-color:rgb(103, 232, 13);}.c18586{--un-rotate:0;--un-rotate-x:0;--un-rotate-y:0;--un-rotate-z:0;--un-scale-x:1;--un-scale-y:1;--un-scale-z:1;--un-skew-x:0;--un-skew-y:0;--un-translate-x:0;--un-translate-y:0;--un-translate-z:0;--un-scroll-snap-strictness:proximity;--un-border-spacing-x:0;--un-border-spacing-y:0;--un-ring-offset-shadow:0 0 rgb(0 0 0 / 0);--un-ring-shadow:0 0 rgb(0 0 0 / 0);--un-shadow:0 0 rgb(0 0 0 / 0);--un-ring-offset-width:0px;--un-ring-offset-color:#fff;--un-ring-width:0px;--un-ring-color:rgb(147 197 253 / .5);}.c21539{display:inline-block;padding:5px;min-height:50px;min-width:50px;}
-		</style>
-                                <style>
-			body {
-			                                 background-image: url('/mxw001.jpg'); /* 设置背景图片为网址 */
-			                                 background-repeat: no-repeat; /* 背景图片不重复 */
-			                                 background-attachment: scroll; /* 背景图片跟随滚动条滚动 */
-			                                 background-size: cover; /* 背景图片覆盖整个容器，保持宽高比 */
-			                                 background-position: center; /* 背景图片居中显示 */
-			}
-		</style>
-		<div>
-			<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-			<meta charset="utf-8" />
-			<div>
-				<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-				<meta name="viewport" content="width=device-width,initial-scale=1" />
-				<meta name="generator" content="VitePress v1.3.5" />
-				<link rel="preload stylesheet" href="/index/css/style.cSHzFneL.css" as="style" />
-				<link rel="preload" href="/index/fonts/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="" />
-				<link rel="modulepreload" href="/index/js/framework.DAuRlsJR.js" />
-				<link rel="modulepreload" href="/index/js/theme.Dm61Zj67.js" />
-				<link rel="modulepreload" href="/index/js/index.md.8P2pPAO2.lean.js" />
-				<link rel="prefetch" href="/index/js/guide_index.md.B3OSKrGW.js" />
-				<link rel="prefetch" href="/index/js/api_index.md.B_aYOoV1.js" />
-				<link rel="prefetch" href="/index/js/guide_what-is-gkd.md.sOJC_lah.js" />
-				<link rel="prefetch" href="/index/js/guide_faq.md.CgbmzTKT.js" />
-				<div id="app">
-					<div data-v-e2af0aff="" class="Layout"><!--[--><!--]--><!--[--><span tabindex="-1" data-v-95115fd8=""></span><a href="https://gkd.li/#VPContent" data-v-95115fd8="" class="VPSkipLink visually-hidden"> Skip to content </a><!--]--><!---->
-						<header data-v-e2af0aff="" data-v-69d0455e="" class="VPNav">
-							<div data-v-69d0455e="" data-v-5bb34321="" class="VPNavBar home top">
-								<div data-v-5bb34321="" class="wrapper">
-									<div data-v-5bb34321="" class="container">
-										<div data-v-5bb34321="" class="title">
-											<div data-v-5bb34321="" data-v-7e7000f3="" class="VPNavBarTitle"><a href="./index.html" data-v-7e7000f3="" class="title"><!--[--><!--]--><!--[--><!--]--><span data-v-7e7000f3="">孟轩网315</span><!--[--><!--]--></a></div>
-										</div>
-										<div data-v-5bb34321="" class="content">
-											<div data-v-5bb34321="" class="content-body"><!--[--><!--]-->
-												<nav aria-labelledby="main-nav-aria-label" data-v-5bb34321="" data-v-ab821956="" class="VPNavBarMenu menu"><span id="main-nav-aria-label" data-v-ab821956="" class="visually-hidden"> Main Navigation </span><!--[--><!--[--><a href="./009/index.html"
-														tabindex="0" data-v-ab821956="" data-v-bf4fa5cd="" class="VPLink link VPNavBarMenuLink"><!--[--><span data-v-bf4fa5cd="">感谢名单</span><!--]--></a><!--]--><!--[--><!--]--><!--[--><a href="./019/index.html" target="_blank" rel="noreferrer" tabindex="0"
-														data-v-ab821956="" data-v-bf4fa5cd="" class="VPLink link vp-external-link-icon VPNavBarMenuLink"><!--[--><span data-v-bf4fa5cd="">网页游戏</span><!--]--></a><!--]--><!--]--></nav><!---->
-												<div data-v-5bb34321="" data-v-db0f4bae="" data-v-cd779927="" class="VPFlyout VPNavBarExtra extra"><button type="button" aria-haspopup="true" aria-expanded="false" aria-label="extra navigation" data-v-cd779927="" class="button"></button>
-													<div data-v-cd779927="" class="menu">
-														<div data-v-cd779927="" data-v-1ba10e3e="" class="VPMenu"><!----><!--[--><!--[--><!---->
-															<div data-v-db0f4bae="" class="group">
-																<div data-v-db0f4bae="" class="item appearance">
-																	<p data-v-db0f4bae="" class="label">外观</p>
-																	<div data-v-db0f4bae="" class="appearance-action"><button type="button" role="switch" title="Switch to dark theme" aria-checked="false" data-v-db0f4bae="" data-v-fe377dea="" data-v-e3189338=""
-																			class="VPSwitch VPSwitchAppearance"><span data-v-e3189338="" class="check"><span data-v-e3189338="" class="icon"><!--[--><span data-v-fe377dea="" class="vpi-sun sun"></span><span data-v-fe377dea=""
-																						class="vpi-moon moon"></span><!--]--></span></span></button></div>
-																</div>
-															</div>
-															<div data-v-db0f4bae="" class="group">
-																<div data-v-db0f4bae="" class="item social-links">
-																	<div data-v-db0f4bae="" data-v-e0de3e0f="" class="VPSocialLinks social-links-list"><!--[--><a href="https://github.com/gkd-kit/gkd" aria-label="github" target="_blank" rel="noopener" data-v-e0de3e0f="" data-v-9ea3d85a=""
-																			class="VPSocialLink no-icon"><span class="vpi-social-github"></span></a><!--]--></div>
-																</div>
-															</div><!--]--><!--]-->
-														</div>
-													</div>
-												</div><!--[--><!--]-->
-											</div>
-										</div>
-									</div>
-								</div>
-								<div data-v-5bb34321="" class="divider">
-									<div data-v-5bb34321="" class="divider-line"></div>
-								</div>
-							</div><!---->
-						</header><!----><!---->
-						<div id="VPContent" data-v-e2af0aff="" data-v-f2d2a2c9="" class="VPContent is-home">
-							<div data-v-f2d2a2c9="" data-v-51e12d84="" class="VPHome"><!--[--><!--]-->
-								<div data-v-51e12d84="" data-v-502fab92="" class="VPHero has-image VPHomeHero">
-									<div data-v-502fab92="" class="container">
-										<div data-v-502fab92="" class="main"><!--[--><!--]--><!--[-->
-											<h1 data-v-502fab92="" class="name"><span data-v-502fab92="" class="clip">孟轩网315</span><span data-v-502fab92="" class="clip"></span></h1>
-											<p data-v-502fab92="" class="text">网站已启动防御措施</p>
-											<div class="list-group-item reed">
-												<marquee scrollamount="10" direction="left" align="Middle" id="iukrbt" class="c5856">
-													<div><span id="busuanzi_container_page_pv" class="c5881">📢本站客流信息：总阅读量<span id="busuanzi_value_page_pv"></span>次 | <span id="busuanzi_container_site_pv" class="c5916">总访问量<span id="busuanzi_value_site_pv"></span>次 | <span
-																	id="busuanzi_container_site_uv" class="c5951">访客数<span id="busuanzi_value_site_uv"></span>人次</span></span></span></div>
-												</marquee>
-											</div>
-											<div id="iwbsjl" class="c17895">3月15日9点30分发布新游戏-快向下看看吧！</div>
-											<div data-v-502fab92="" class="actions"><!--[-->
-												<div data-v-502fab92="" class="actions"><!--[-->
-                                                                                                                                                                                                                <div data-v-502fab92="" class="action"><a href="https://www.hotpe.top" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">友链：Hotpe</a></div>
-													<div data-v-502fab92="" class="action"><a href="https://share.acedata.cloud/r/1uKi0QtXBH" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">孟轩网AI</a></div>
-                                                                                                                                                                                                                <div data-v-502fab92="" class="action"><a href="/019/index.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand" style="background-color: red; color: white;">网页游戏</a></div>
-													<div data-v-502fab92="" class="action"><a href="https://www.mxw315.buzz" data-v-502fab92="" data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">加速通道1</a></div>
-                                                                                                                                                                                                                <div data-v-502fab92="" class="action"><a href="https://www.mxw315.cfd" data-v-502fab92=""data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">备用通道1</a></div><div data-v-502fab92="" class="action"><a href="https://www.mxw315.top" data-v-502fab92="" data-v-d8218fcc="" se_prerender_url="complete" class="VPButton medium brand">备用通道2</a></div>
-													<div data-v-502fab92="" class="action"></div><!--]-->
-												</div>
-												<div data-v-502fab92="" class="actions"><!--[-->
-													<div data-v-502fab92="" class="action"><a href="./074/index.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand" style="background-color: red; color: white;">孟轩网下载站</a></div>
-                                                                                                                                                                                                                <div data-v-502fab92="" class="action"><a href="./009.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">感谢名单</a></div>
-													<div data-v-502fab92="" class="action"><a href="https://ai.mxw315.buzz" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium brand">孟轩网AI（备用）</a></div>
-													<div data-v-502fab92="" class="action"><a href="./028/index.html" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">捕鱼玩家</a></div>
-													<div data-v-502fab92="" class="action"><a href="./032/index.html" target="_blank" rel="noreferrer" data-v-502fab92="" data-v-d8218fcc="" class="VPButton medium alt">喂饱青蛙</a></div><!--]-->
-												</div><!--]-->
-											</div><!--[--><!--]-->
-										</div>
-										<div data-v-502fab92="" class="image">
-											<div data-v-502fab92="" class="image-container">
-												<div data-v-502fab92="" class="image-bg"></div><!--[--><!--[--><!--]--><!--]-->
-											</div>
-										</div>
-									</div>
-								</div><!--[--><!--]--><!--[--><!--]-->
-								<div data-v-1dfe752d="" class="container"></div>
-								<div data-v-51e12d84="" data-v-1dfe752d="" class="VPFeatures VPHomeFeatures">
-									<div data-v-1dfe752d="" class="container">
-										<script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3KkEpLxmzacRhipz/quote.js?theme=0&col=true&f=12"></script><a target="_blank" title="51la网站统计|仅作者能用" href="https://v6.51.la/land/3KkEpLxmzacRhipz"><img
-												src="index/img/1-3.png" /></a><a target="_blank" title="灵雀应用监控|仅作者能用" href="https://perf.51.la/analytics/overview/18942"><img src="index/img/logo_inner.f0c7cad9.png" /></a>
-										<div data-v-1dfe752d="" class="items"><!--[-->
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">本站信息</h2>
-														<p data-v-b2fee82c="" class="details">始于2024年8月23日<br />作者：孟轩科技</p><!---->
-													</article><!--]-->
-												</div>
-											</div>
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">纯净</h2>
-														<p data-v-b2fee82c="" class="details">我们一直努力打造简洁、纯净的页面<br /><br /></p><!---->
-													</article><!--]-->
-												</div>
-											</div>
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">
-															<h2 id="iqdlpm-2" draggable="false" data-v-b2fee82c="" class="title gjs-hovered c18586">免费</h2>
-														</h2>
-														<p data-v-b2fee82c="" class="details">所有站内资源不收取任何费用</p><!---->
-													</article><!--]-->
-												</div>
-											</div>
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">无广告</h2>
-														<p data-v-b2fee82c="" class="details">不投放任何广告内容</p><!---->
-													</article><!--]-->
-												</div>
-											</div><!--]-->
-										</div>
-									</div>
-								</div>
-								<div data-v-51e12d84="" data-v-1dfe752d="" class="VPFeatures VPHomeFeatures">
-									<div data-v-1dfe752d="" class="container">
-										<div data-v-1dfe752d="" class="items"><!--[-->
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">意见反馈</h2>
-														<p data-v-b2fee82c="" class="details">邮箱：3838451843@qq.com<br />更多方式请看文档</p><!---->
-													</article><!--]-->
-												</div>
-											</div>
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">GitHub仓库开源地址</h2><a href="https://github.com/tmx315/mxw315" class="c21539">
-															<p data-v-b2fee82c="" class="details">https://github.com/tmx315/mxw315</p>
-														</a><!---->
-													</article><!--]-->
-												</div>
-											</div>
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">安全放心</h2>
-														<p data-v-b2fee82c="" class="details">所有文件全为开源，放心使用，安全保障</p><!---->
-													</article><!--]-->
-												</div>
-											</div>
-											<div data-v-1dfe752d="" class="grid-4 item">
-												<div data-v-1dfe752d="" data-v-b2fee82c="" class="VPLink no-icon VPFeature"><!--[-->
-													<article data-v-b2fee82c="" class="box"><!---->
-														<h2 data-v-b2fee82c="" class="title">开源须知</h2>
-														<p data-v-b2fee82c="" class="details">本网站在MIT许可证下发布</p><!---->
-													</article><!--]-->
-												</div>
-											</div><!--]-->
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<footer data-v-e2af0aff="" data-v-c70eb9e7="" class="VPFooter">
-							<div data-v-c70eb9e7="" class="container">
-								<p data-v-c70eb9e7="" class="copyright">孟轩网</p>
-							</div>
-							<div data-v-c70eb9e7="" class="container">
-								<p data-v-c70eb9e7="" class="copyright">版权所有 © 2024~2025 孟轩科技</p>
-							</div>
-						</footer><!--[--><!--]-->
-					</div>
-				</div>
-				<script>
-					let stop;
-					const img = new Image();
-					img.src = "./mxw003.png";
-					
-					function Sakura(x, y, s, r, fn) {
-					    this.x = x;
-					    this.y = y;
-					    this.s = s;
-					    this.r = r;
-					    this.fn = fn;
-					}
-					
-					Sakura.prototype.draw = function (cxt) {
-					    cxt.save();
-					    const xc = 40 * this.s / 4;
-					    cxt.translate(this.x, this.y);
-					    cxt.rotate(this.r);
-					    cxt.drawImage(img, 0, 0, 40 * this.s, 40 * this.s)
-					    cxt.restore();
-					}
-					
-					Sakura.prototype.update = function () {
-					    this.x = this.fn.x(this.x, this.y);
-					    this.y = this.fn.y(this.y, this.y);
-					    this.r = this.fn.r(this.r);
-					    if (this.x > window.innerWidth || this.x < 0 || this.y > window.innerHeight || this.y < 0) {
-					        this.r = getRandom('fnr');
-					        if (Math.random() > 0.4) {
-					            this.x = getRandom('x');
-					            this.y = 0;
-					            this.s = getRandom('s');
-					            this.r = getRandom('r');
-					        } else {
-					            this.x = window.innerWidth;
-					            this.y = getRandom('y');
-					            this.s = getRandom('s');
-					            this.r = getRandom('r');
-					        }
-					    }
-					}
-					
-					SakuraList = function () {
-					    this.list = [];
-					}
-					SakuraList.prototype.push = function (sakura) {
-					    this.list.push(sakura);
-					}
-					SakuraList.prototype.update = function () {
-					    let i = 0, len = this.list.length;
-					    for (; i < len; i++) {
-					        this.list[i].update();
-					    }
-					}
-					SakuraList.prototype.draw = function (cxt) {
-					    let i = 0, len = this.list.length;
-					    for (; i < len; i++) {
-					        this.list[i].draw(cxt);
-					    }
-					}
-					SakuraList.prototype.get = function (i) {
-					    return this.list[i];
-					}
-					SakuraList.prototype.size = function () {
-					    return this.list.length;
-					}
-					
-					function getRandom(option) {
-					    let ret, random;
-					    switch (option) {
-					        case 'x':
-					            ret = Math.random() * window.innerWidth;
-					            break;
-					        case 'y':
-					            ret = Math.random() * window.innerHeight;
-					            break;
-					        case 's':
-					            ret = Math.random();
-					            break;
-					        case 'r':
-					            ret = Math.random() * 6;
-					            break;
-					        case 'fnx':
-					            random = -0.5 + Math.random();
-					            ret = function (x, y) {
-					                return x + 0.5 * random - 1.7;
-					            };
-					            break;
-					        case 'fny':
-					            random = 1.5 + Math.random() * 0.7
-					            ret = function (x, y) {
-					                return y + random;
-					            };
-					            break;
-					        case 'fnr':
-					            random = Math.random() * 0.03;
-					            ret = function (r) {
-					                return r + random;
-					            };
-					            break;
-					    }
-					    return ret;
-					}
-					
-					function startSakura() {
-							stopp()
-					    requestAnimationFrame = window.requestAnimationFrame ||
-					        window.mozRequestAnimationFrame ||
-					        window.webkitRequestAnimationFrame ||
-					        window.msRequestAnimationFrame ||
-					        window.oRequestAnimationFrame;
-					    let canvas = document.createElement('canvas'),
-					        cxt;
-					    canvas.height = window.innerHeight;
-					    canvas.width = window.innerWidth;
-					    canvas.setAttribute('style', 'position: fixed;left: 0;top: 0;pointer-events: none;');
-					    canvas.setAttribute('id', 'canvas_sakura');
-					    document.getElementsByTagName('body')[0].appendChild(canvas);
-					    cxt = canvas.getContext('2d');
-					    const sakuraList = new SakuraList();
-					    for (let i = 0; i < 50; i++) {
-					        let sakura, randomX, randomY, randomS, randomR, randomFnx, randomFny, randomFnR;
-					        randomX = getRandom('x');
-					        randomY = getRandom('y');
-					        randomR = getRandom('r');
-					        randomS = getRandom('s');
-					        randomFnx = getRandom('fnx');
-					        randomFny = getRandom('fny');
-					        randomFnR = getRandom('fnr');
-					        sakura = new Sakura(randomX, randomY, randomS, randomR, {
-					            x: randomFnx,
-					            y: randomFny,
-					            r: randomFnR
-					        });
-					        sakura.draw(cxt);
-					        sakuraList.push(sakura);
-					    }
-					    stop = requestAnimationFrame(function () {
-					        cxt.clearRect(0, 0, canvas.width, canvas.height);
-					        sakuraList.update();
-					        sakuraList.draw(cxt);
-					        stop = requestAnimationFrame(arguments.callee);
-					    })
-					}
-					
-					window.onresize = function () {
-					    const canvasSnow = document.getElementById('canvas_sakura');
-					    canvasSnow.width = window.innerWidth;
-					    canvasSnow.height = window.innerHeight;
-					}
-					
-					img.onload = function () {
-					    startSakura();
-					}
-					
-					function stopp() {
-					    let child = document.getElementById("canvas_sakura");
-						    if (child) {
-						        child.parentNode.removeChild(child);
-						        window.cancelAnimationFrame(stop);
-						    }
-					}
-				</script>
-								<script id="check-dark-mode">
-									(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();
-				</script>
-				<script id="check-mac-os">
-					document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));
-				</script>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <header>
+            <h1>游戏中心</h1>
+            <p>精选网页游戏合集，无需下载，点击即玩</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="搜索游戏...">
+        </div>
+
+        <div class="game-counter">
+            共 <span id="game-count">0</span> 款游戏
+        </div>
+
+        <div class="category-tabs">
+            <div class="category-tab active" data-category="all">全部游戏</div>
+            <div class="category-tab" data-category="mc">我的世界</div>
+            <div class="category-tab" data-category="pvz">植物大战僵尸</div>
+            <div class="category-tab" data-category="classic">经典游戏</div>
+            <div class="category-tab" data-category="visual">视觉特效</div>
+        </div>
+
+        <div class="games-grid" id="games-grid">
+            <!-- 游戏卡片将通过JavaScript动态生成 -->
+        </div>
+
+        <footer>
+            <p>© 2023 游戏中心 | 所有游戏版权归原作者所有</p>
+        </footer>
+    </div>
+
+    <script>
+        // 游戏数据
+        const games = [
+            {
+                title: "我的世界112 3D 电脑英文WASM-GC测试版",
+                url: "https://www.mc.js.cool/mc/beta-1.12wasm/index.html",
+                category: "mc",
+                tags: ["我的世界", "3D", "WASM", "测试版"],
+                description: "体验我的世界1.12测试版，使用WebAssembly技术，带来更好的性能表现。"
+            },
+            {
+                title: "我的世界1.8 3D 电脑中文WASM-GC版",
+                url: "https://www.mc.js.cool/mc/1.8wasm/index.html",
+                category: "mc",
+                tags: ["我的世界", "3D", "WASM", "中文"],
+                description: "经典1.8版本，中文界面，使用WebAssembly技术优化性能。"
+            },
+            {
+                title: "我的世界1.8 3D 电脑中文JS版",
+                url: "https://www.mc.js.cool/mc/1.8/index.html",
+                category: "mc",
+                tags: ["我的世界", "3D", "JavaScript", "中文"],
+                description: "使用JavaScript实现的1.8版本，兼容性更好。"
+            },
+            {
+                title: "我的世界1.8 3D 触屏中文JS版",
+                url: "https://www.mc.js.cool/mc/1.8touch/index.html",
+                category: "mc",
+                tags: ["我的世界", "3D", "触屏版", "中文"],
+                description: "专为触屏设备优化的1.8版本，移动端体验更佳。"
+            },
+            {
+                title: "我的世界1.5 3D 电脑英文JS版",
+                url: "https://www.mc.js.cool/mc/1.5/index.html",
+                category: "mc",
+                tags: ["我的世界", "3D", "怀旧版", "英文"],
+                description: "体验经典的1.5版本，重温早期我的世界。"
+            },
+            {
+                title: "我的世界远古版 3D 电脑英文轻量级版",
+                url: "https://www.mc.js.cool/mc/1.5/index.html",
+                category: "mc",
+                tags: ["我的世界", "3D", "轻量级", "远古版"],
+                description: "最早期版本，轻量级设计，低配置设备也能流畅运行。"
+            },
+            {
+                title: "植物大战僵尸之自制版",
+                url: "/090/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "自制版"],
+                description: "玩家自制版本，包含全新植物和僵尸。"
+            },
+            {
+                title: "植物大战僵尸之95版",
+                url: "/084/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "95版"],
+                description: "经典95版本，难度提升，更具挑战性。"
+            },
+            {
+                title: "植物大战僵尸之大战尸王",
+                url: "/083/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "尸王"],
+                description: "与强大的尸王展开激烈战斗。"
+            },
+            {
+                title: "植物大战僵尸之错误102",
+                url: "/080/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "错误102"],
+                description: "独特的错误102版本，带来不一样的游戏体验。"
+            },
+            {
+                title: "植物大战僵尸之魔改版",
+                url: "/079/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "魔改版"],
+                description: "经过大量修改的魔改版本，游戏玩法全面升级。"
+            },
+            {
+                title: "植物大战僵尸之内卷的植物",
+                url: "/078/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "内卷"],
+                description: "植物们也开始内卷了，看看谁能生存到最后。"
+            },
+            {
+                title: "植物大战僵尸之中国之旅",
+                url: "https://www.mxw315.buzz/055/lndex.htm",
+                category: "pvz",
+                tags: ["植物大战僵尸", "中国之旅"],
+                description: "融入中国元素的特别版本，体验不一样的植物大战僵尸。"
+            },
+            {
+                title: "植物大战僵尸之星空之旅",
+                url: "https://www.mxw315.buzz/054/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "星空之旅"],
+                description: "在星空背景下展开的植物大战僵尸冒险。"
+            },
+            {
+                title: "经典扫雷",
+                url: "/089/index.html",
+                category: "classic",
+                tags: ["扫雷", "经典", "益智"],
+                description: "经典的扫雷游戏，考验你的逻辑推理能力。"
+            },
+            {
+                title: "视觉盛宴之运动的线",
+                url: "/088/index.html",
+                category: "visual",
+                tags: ["视觉特效", "动态线条"],
+                description: "线条的动态变化创造出的视觉盛宴。"
+            },
+            {
+                title: "视觉盛宴",
+                url: "/082/index.html",
+                category: "visual",
+                tags: ["视觉特效", "艺术"],
+                description: "令人惊叹的视觉艺术展示。"
+            },
+            {
+                title: "纸飞机快跑",
+                url: "/087/index.html",
+                category: "classic",
+                tags: ["纸飞机", "休闲", "跑酷"],
+                description: "控制纸飞机穿越各种障碍，挑战高分。"
+            },
+            {
+                title: "营救小狗之画线搭桥",
+                url: "/086/index.html",
+                category: "classic",
+                tags: ["营救小狗", "画线", "益智"],
+                description: "通过画线搭桥帮助小狗安全到达目的地。"
+            },
+            {
+                title: "跳一跳",
+                url: "/085/index.html",
+                category: "classic",
+                tags: ["跳一跳", "休闲", "敏捷"],
+                description: "控制角色在不同平台上跳跃，挑战精准度。"
+            },
+            {
+                title: "羊了个羊",
+                url: "/081/index.html",
+                category: "classic",
+                tags: ["羊了个羊", "消除", "益智"],
+                description: "热门消除游戏，挑战你的观察力和策略。"
+            },
+            {
+                title: "羊了个羊之魔改版",
+                url: "/029/index.html",
+                category: "classic",
+                tags: ["羊了个羊", "魔改版", "消除"],
+                description: "羊了个羊的魔改版本，带来全新挑战。"
+            },
+            {
+                title: "愤怒的小鸟",
+                url: "/077/index.html",
+                category: "classic",
+                tags: ["愤怒的小鸟", "弹射", "物理"],
+                description: "经典弹射游戏，用小鸟击败猪猪城堡。"
+            },
+            {
+                title: "岩浆逃亡",
+                url: "/075/index.html",
+                category: "classic",
+                tags: ["岩浆逃亡", "跑酷", "敏捷"],
+                description: "在岩浆上涨前逃离，考验你的反应速度。"
+            },
+            {
+                title: "贪吃蛇",
+                url: "/072/index.html",
+                category: "classic",
+                tags: ["贪吃蛇", "经典", "休闲"],
+                description: "经典贪吃蛇游戏，控制小蛇吃食物成长。"
+            },
+            {
+                title: "迷你战争",
+                url: "/071/index.html",
+                category: "classic",
+                tags: ["迷你战争", "策略", "战斗"],
+                description: "小型战争游戏，指挥你的部队取得胜利。"
+            },
+            {
+                title: "我的世界（2D平面版）以下架",
+                url: "/070/1index.html",
+                category: "mc",
+                tags: ["我的世界", "2D", "平面版"],
+                description: "2D平面版的我的世界，提供不同的游戏体验。"
+            },
+            {
+                title: "我的世界（射击版）",
+                url: "/069/index.html",
+                category: "mc",
+                tags: ["我的世界", "射击", "战斗"],
+                description: "我的世界射击版本，体验不同的战斗玩法。"
+            },
+            {
+                title: "小猫捕鱼",
+                url: "/066/index.html",
+                category: "classic",
+                tags: ["小猫捕鱼", "休闲", "捕鱼"],
+                description: "控制小猫捕捉水中的鱼，获得高分。"
+            },
+            {
+                title: "小乌龟的家园4.0",
+                url: "/068/index.html",
+                category: "classic",
+                tags: ["小乌龟", "养成", "休闲"],
+                description: "照顾小乌龟，为它打造舒适的家园。"
+            },
+            {
+                title: "小乌龟的家园3.0",
+                url: "/067/index.html",
+                category: "classic",
+                tags: ["小乌龟", "养成", "休闲"],
+                description: "早期版本的小乌龟家园，体验简单养成乐趣。"
+            },
+            {
+                title: "电子钢琴",
+                url: "https://www.gjk.cn/piano#/",
+                category: "classic",
+                tags: ["电子钢琴", "音乐", "创作"],
+                description: "在线电子钢琴，创作属于你的音乐。"
+            },
+            {
+                title: "马路杀手",
+                url: "/065/index.html",
+                category: "classic",
+                tags: ["马路杀手", "驾驶", "挑战"],
+                description: "在繁忙的马路中穿梭，考验你的驾驶技巧。"
+            },
+            {
+                title: "一起来种树",
+                url: "/020/index.html",
+                category: "classic",
+                tags: ["种树", "休闲", "环保"],
+                description: "一起种植树木，打造绿色家园。"
+            },
+            {
+                title: "棒打傻猫",
+                url: "/064/index.html",
+                category: "classic",
+                tags: ["棒打傻猫", "休闲", "搞笑"],
+                description: "有趣的打猫游戏，释放压力轻松一刻。"
+            },
+            {
+                title: "3D飞行",
+                url: "/063/index.html",
+                category: "visual",
+                tags: ["3D飞行", "飞行", "视觉"],
+                description: "体验3D飞行，感受自由翱翔的快感。"
+            },
+            {
+                title: "开好小汽车",
+                url: "/062/index.html",
+                category: "classic",
+                tags: ["开好小汽车", "驾驶", "休闲"],
+                description: "驾驶小汽车完成各种任务和挑战。"
+            },
+            {
+                title: "管道修理工",
+                url: "/061/index.html",
+                category: "classic",
+                tags: ["管道修理工", "益智", "解谜"],
+                description: "连接管道，解决各种管道难题。"
+            },
+            {
+                title: "神枪手",
+                url: "/060/index.html",
+                category: "classic",
+                tags: ["神枪手", "射击", "精准"],
+                description: "考验你的射击技巧，成为神枪手。"
+            },
+            {
+                title: "欢乐钓鱼",
+                url: "/059/index.html",
+                category: "classic",
+                tags: ["欢乐钓鱼", "钓鱼", "休闲"],
+                description: "享受钓鱼的乐趣，捕捉各种鱼类。"
+            },
+            {
+                title: "跳跳蛙",
+                url: "/058/index.html",
+                category: "classic",
+                tags: ["跳跳蛙", "跳跃", "休闲"],
+                description: "控制小青蛙跳跃荷叶，到达目的地。"
+            },
+            {
+                title: "捕鱼达人",
+                url: "/057/index.html",
+                category: "classic",
+                tags: ["捕鱼达人", "捕鱼", "休闲"],
+                description: "经典的捕鱼游戏，捕捉各种海洋生物。"
+            },
+            {
+                title: "新植物大战僵尸",
+                url: "https://www.mxw315.buzz/055/index.html",
+                category: "pvz",
+                tags: ["植物大战僵尸", "新版"],
+                description: "全新版本的植物大战僵尸，带来新鲜体验。"
+            },
+            {
+                title: "植物大战僵尸",
+                url: "https://www.mxw315.buzz/054/Index.htm",
+                category: "pvz",
+                tags: ["植物大战僵尸", "经典"],
+                description: "原版植物大战僵尸，经典塔防游戏。"
+            },
+            {
+                title: "3D滚球",
+                url: "/053/index.html",
+                category: "visual",
+                tags: ["3D滚球", "3D", "平衡"],
+                description: "控制小球在3D迷宫中滚动，保持平衡到达终点。"
+            },
+            {
+                title: "踩云快",
+                url: "/052/index.html",
+                category: "classic",
+                tags: ["踩云快", "跳跃", "休闲"],
+                description: "在云朵间跳跃，挑战你的反应速度。"
+            },
+            {
+                title: "从1到10",
+                url: "/008/index.html",
+                category: "classic",
+                tags: ["从1到10", "数字", "益智"],
+                description: "简单的数字游戏，考验你的观察力。"
+            },
+            {
+                title: "极品赛车",
+                url: "/051/index.html",
+                category: "classic",
+                tags: ["极品赛车", "赛车", "竞速"],
+                description: "刺激的赛车游戏，体验极速驾驶的快感。"
+            },
+            {
+                title: "球对对碰",
+                url: "/050/index.html",
+                category: "classic",
+                tags: ["球对对碰", "消除", "匹配"],
+                description: "通过匹配相同颜色的球获得高分。"
+            },
+            {
+                title: "土豆历险记",
+                url: "/049/index.html",
+                category: "classic",
+                tags: ["土豆历险记", "冒险", "休闲"],
+                description: "帮助小土豆完成各种冒险任务。"
+            },
+            {
+                title: "黄金矿工",
+                url: "/048/index.html",
+                category: "classic",
+                tags: ["黄金矿工", "挖矿", "经典"],
+                description: "经典黄金矿工游戏，挖掘金块获得财富。"
+            },
+            {
+                title: "投篮吧",
+                url: "/047/index.html",
+                category: "classic",
+                tags: ["投篮吧", "篮球", "精准"],
+                description: "投篮游戏，考验你的精准度和时机把握。"
+            },
+            {
+                title: "五子棋 2",
+                url: "/036/index.html",
+                category: "classic",
+                tags: ["五子棋", "棋类", "策略"],
+                description: "经典五子棋游戏，与AI或其他玩家对战。"
+            },
+            {
+                title: "五子棋 1",
+                url: "/046/index.html",
+                category: "classic",
+                tags: ["五子棋", "棋类", "策略"],
+                description: "五子棋的另一个版本，提供不同的游戏体验。"
+            },
+            {
+                title: "中国象棋",
+                url: "/010/index.html",
+                category: "classic",
+                tags: ["中国象棋", "棋类", "策略"],
+                description: "经典中国象棋，体验中国传统棋类游戏。"
+            },
+            {
+                title: "走迷宫",
+                url: "/040/index.html",
+                category: "classic",
+                tags: ["走迷宫", "解谜", "益智"],
+                description: "在复杂的迷宫中找到出口，考验你的方向感。"
+            },
+            {
+                title: "狂打灰太狼",
+                url: "/041/index.html",
+                category: "classic",
+                tags: ["狂打灰太狼", "休闲", "搞笑"],
+                description: "有趣的打灰太狼游戏，释放压力轻松一刻。"
+            },
+            {
+                title: "看图猜成语",
+                url: "/045/index.html",
+                category: "classic",
+                tags: ["看图猜成语", "成语", "益智"],
+                description: "通过图片提示猜出正确的成语，增长知识。"
+            },
+            {
+                title: "营救宠物",
+                url: "/044/index.html",
+                category: "classic",
+                tags: ["营救宠物", "解谜", "益智"],
+                description: "帮助宠物找到回家的路，解决各种难题。"
+            },
+            {
+                title: "命悬一线",
+                url: "/043/index.html",
+                category: "classic",
+                tags: ["命悬一线", "平衡", "挑战"],
+                description: "在危险的环境中保持平衡，挑战你的耐心。"
+            },
+            {
+                title: "猜水果",
+                url: "/042/index.html",
+                category: "classic",
+                tags: ["猜水果", "猜谜", "休闲"],
+                description: "通过提示猜出正确的水果，考验你的知识。"
+            },
+            {
+                title: "见缝插针",
+                url: "/005/index.html",
+                category: "classic",
+                tags: ["见缝插针", "精准", "挑战"],
+                description: "将针插入旋转的球体中，考验你的精准度。"
+            },
+            {
+                title: "字牌翻翻看",
+                url: "/039/index.html",
+                category: "classic",
+                tags: ["字牌翻翻看", "记忆", "益智"],
+                description: "翻牌记忆游戏，找到相同的字牌配对。"
+            },
+            {
+                title: "踩黑块",
+                url: "/038/index.html",
+                category: "classic",
+                tags: ["踩黑块", "节奏", "敏捷"],
+                description: "跟着节奏踩黑块，考验你的反应速度。"
+            },
+            {
+                title: "犀牛对对碰",
+                url: "/037/index.html",
+                category: "classic",
+                tags: ["犀牛对对碰", "消除", "匹配"],
+                description: "通过匹配相同颜色的犀牛获得高分。"
+            },
+            {
+                title: "飞机大战",
+                url: "/035/index.html",
+                category: "classic",
+                tags: ["飞机大战", "射击", "经典"],
+                description: "经典飞机射击游戏，击败敌机获得高分。"
+            },
+            {
+                title: "吃月饼",
+                url: "/031/index.html",
+                category: "classic",
+                tags: ["吃月饼", "休闲", "节日"],
+                description: "中秋主题游戏，控制角色吃掉月饼。"
+            },
+            {
+                title: "熊猫也疯狂",
+                url: "/034/index.html",
+                category: "classic",
+                tags: ["熊猫也疯狂", "休闲", "搞笑"],
+                description: "控制可爱的熊猫完成各种有趣的任务。"
+            },
+            {
+                title: "飞行玩家",
+                url: "/033/index.html",
+                category: "classic",
+                tags: ["飞行玩家", "飞行", "控制"],
+                description: "控制飞行器完成各种飞行任务。"
+            },
+            {
+                title: "喂饱青蛙",
+                url: "/032/index.html",
+                category: "classic",
+                tags: ["喂饱青蛙", "休闲", "喂养"],
+                description: "帮助青蛙捕捉食物，让它吃饱。"
+            },
+            {
+                title: "捕鱼玩家",
+                url: "/028/index.html",
+                category: "classic",
+                tags: ["捕鱼玩家", "捕鱼", "休闲"],
+                description: "体验捕鱼的乐趣，捕捉各种海洋生物。"
+            },
+            {
+                title: "自己来建房",
+                url: "/030/index.html",
+                category: "classic",
+                tags: ["自己来建房", "建造", "创意"],
+                description: "发挥创意，建造属于自己的房子。"
+            },
+            {
+                title: "羊了个羊-魔改版",
+                url: "/029/index.html",
+                category: "classic",
+                tags: ["羊了个羊", "魔改版", "消除"],
+                description: "羊了个羊的另一个魔改版本，带来全新挑战。"
+            },
+            {
+                title: "水果切切乐",
+                url: "/027/index.html",
+                category: "classic",
+                tags: ["水果切切乐", "切割", "休闲"],
+                description: "切割飞来的水果，考验你的反应速度。"
+            },
+            {
+                title: "打飞企鹅",
+                url: "/024/index.html",
+                category: "classic",
+                tags: ["打飞企鹅", "休闲", "搞笑"],
+                description: "有趣的打企鹅游戏，释放压力轻松一刻。"
+            },
+            {
+                title: "开心消消乐",
+                url: "/026/index.html",
+                category: "classic",
+                tags: ["开心消消乐", "消除", "益智"],
+                description: "经典的消除游戏，匹配相同元素获得高分。"
+            },
+            {
+                title: "代码雨",
+                url: "/025/index.html",
+                category: "visual",
+                tags: ["代码雨", "视觉", "数字"],
+                description: "模仿电影《黑客帝国》中的代码雨效果。"
+            },
+            {
+                title: "涂鸦画板",
+                url: "/023/index.html",
+                category: "classic",
+                tags: ["涂鸦画板", "绘画", "创意"],
+                description: "自由涂鸦画板，发挥你的创意。"
+            },
+            {
+                title: "计算器",
+                url: "/018/index.html",
+                category: "classic",
+                tags: ["计算器", "工具", "实用"],
+                description: "简单的在线计算器，满足基本计算需求。"
+            },
+            {
+                title: "雷达扫描",
+                url: "/016/index.html",
+                category: "visual",
+                tags: ["雷达扫描", "视觉", "扫描"],
+                description: "模拟雷达扫描效果，创造科技感视觉体验。"
+            },
+            {
+                title: "三角花行星",
+                url: "/017/index.html",
+                category: "visual",
+                tags: ["三角花行星", "视觉", "几何"],
+                description: "几何图形组成的视觉艺术，创造独特美感。"
+            },
+            {
+                title: "音频隧道",
+                url: "/013/index.html",
+                category: "visual",
+                tags: ["音频隧道", "视觉", "音频"],
+                description: "音频驱动的视觉特效，创造沉浸式体验。"
+            },
+            {
+                title: "大风车",
+                url: "/012/index.html",
+                category: "visual",
+                tags: ["大风车", "视觉", "旋转"],
+                description: "旋转的大风车视觉效果，带来动态美感。"
+            },
+            {
+                title: "光丝图谱",
+                url: "/011/index.html",
+                category: "visual",
+                tags: ["光丝图谱", "视觉", "光线"],
+                description: "光线组成的图谱，创造独特的视觉体验。"
+            },
+            {
+                title: "涂鸦",
+                url: "/010/index.html",
+                category: "classic",
+                tags: ["涂鸦", "绘画", "创意"],
+                description: "简单的涂鸦工具，自由发挥创意。"
+            },
+            {
+                title: "步步生圈",
+                url: "/007/index.html",
+                category: "visual",
+                tags: ["步步生圈", "视觉", "交互"],
+                description: "交互式视觉效果，每一步都会生成新的圆圈。"
+            },
+            {
+                title: "花环",
+                url: "/006/index.html",
+                category: "visual",
+                tags: ["花环", "视觉", "几何"],
+                description: "美丽的花环视觉效果，创造视觉享受。"
+            },
+            {
+                title: "粒子爆炸",
+                url: "/004/index.html",
+                category: "visual",
+                tags: ["粒子爆炸", "视觉", "粒子"],
+                description: "粒子爆炸特效，创造震撼的视觉体验。"
+            },
+            {
+                title: "3D城市",
+                url: "/003/index.html",
+                category: "visual",
+                tags: ["3D城市", "3D", "视觉"],
+                description: "3D城市景观，体验立体的城市风貌。"
+            }
+        ];
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', function() {
+            const gamesGrid = document.getElementById('games-grid');
+            const categoryTabs = document.querySelectorAll('.category-tab');
+            const searchBox = document.querySelector('.search-box');
+            const gameCount = document.getElementById('game-count');
+            
+            // 更新游戏数量
+            gameCount.textContent = games.length;
+            
+            // 渲染游戏卡片
+            function renderGames(filteredGames = games) {
+                gamesGrid.innerHTML = '';
+                
+                filteredGames.forEach(game => {
+                    const gameCard = document.createElement('div');
+                    gameCard.className = 'game-card';
+                    gameCard.setAttribute('data-category', game.category);
+                    
+                    // 生成标签HTML
+                    const tagsHTML = game.tags.map(tag => {
+                        let tagClass = 'tag';
+                        if (tag.includes('我的世界')) tagClass += ' mc';
+                        else if (tag.includes('植物大战僵尸')) tagClass += ' pvz';
+                        else if (['视觉', '3D', '粒子', '光线', '音频', '几何'].some(t => tag.includes(t))) tagClass += ' visual';
+                        else if (['经典', '益智', '休闲', '策略', '棋类', '射击'].some(t => tag.includes(t))) tagClass += ' classic';
+                        
+                        return `<span class="${tagClass}">${tag}</span>`;
+                    }).join('');
+                    
+                    // 确定按钮类名
+                    let btnClass = 'btn';
+                    if (game.category === 'mc') btnClass += ' mc';
+                    else if (game.category === 'pvz') btnClass += ' pvz';
+                    else if (game.category === 'visual') btnClass += ' visual';
+                    else if (game.category === 'classic') btnClass += ' classic';
+                    
+                    gameCard.innerHTML = `
+                        <div class="game-card-content">
+                            <h3>${game.title}</h3>
+                            <div class="tags">${tagsHTML}</div>
+                            <p>${game.description}</p>
+                            <a href="${game.url}" class="${btnClass}" target="_blank">开始游戏</a>
+                        </div>
+                    `;
+                    
+                    gamesGrid.appendChild(gameCard);
+                });
+            }
+            
+            // 初始渲染
+            renderGames();
+            
+            // 分类筛选
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const category = this.getAttribute('data-category');
+                    
+                    // 更新活跃标签
+                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 筛选游戏卡片
+                    if (category === 'all') {
+                        renderGames();
+                    } else {
+                        const filteredGames = games.filter(game => game.category === category);
+                        renderGames(filteredGames);
+                    }
+                });
+            });
+            
+            // 搜索功能
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                if (searchTerm === '') {
+                    const activeCategory = document.querySelector('.category-tab.active').getAttribute('data-category');
+                    if (activeCategory === 'all') {
+                        renderGames();
+                    } else {
+                        const filteredGames = games.filter(game => game.category === activeCategory);
+                        renderGames(filteredGames);
+                    }
+                    return;
+                }
+                
+                const filteredGames = games.filter(game => 
+                    game.title.toLowerCase().includes(searchTerm) || 
+                    game.description.toLowerCase().includes(searchTerm) ||
+                    game.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+                
+                renderGames(filteredGames);
+            });
+        });
+    </script>
 </body>
 </html>
